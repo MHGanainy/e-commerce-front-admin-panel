@@ -1,0 +1,47 @@
+<!-- Modal -->
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">Select Permission(s)</h4>
+      <div class="input-group">
+        <input class="form-control" type="search" [(ngModel)]="searchValue" placeholder="Search" />
+      </div>
+    </div>
+
+    <div class="modal-body">
+      <div class="container-fluid">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>
+                <input id="assign-all-perms-checkbox" class="cursor-pointer" type="checkbox" (click)="onAllPermsCheckClicked($event)" />
+              </th>
+              <th>ID</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <Caption *ngIf="loadingFlag == true" class="text-center">
+            <img src="/assets/imgs/Spinner-1s-200px.svg" alt="loading..." style="width: 7rem" />
+          </Caption>
+          <Caption *ngIf="loadingFlag == false && (permsArr == null || permsArr.length == 0)">No Data</Caption>
+          <tbody>
+            <ng-container *ngFor="let perm of permsArr; let i = index">
+              <tr *ngIf="matchPerm(perm)" (click)="onPermClicked(i)" [class.selected]="perm.isSelected">
+                <td><input class="cursor-pointer" type="checkbox" [(ngModel)]="perm.isSelected" /></td>
+                <th>{{ perm.permission }}</th>
+                <td>{{ perm.permissionText }}</td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+      <!-- end of container-fluid-->
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-sm btn-danger" type="button" (click)="onCancelClicked()">Cancel</button>
+      <button class="btn btn-sm btn-success" type="button" (click)="onSaveClicked()">Save</button>
+    </div>
+  </div>
+  <!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->

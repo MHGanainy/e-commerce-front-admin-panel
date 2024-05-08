@@ -1,0 +1,15 @@
+<div style="position: fixed; width: 85%; height: 80%; left: 7.5%; bottom: 15%">
+  <ngx-extended-pdf-viewer
+    [src]="fileSrc"
+    [filenameForDownload]="filename"
+    useBrowserLocale="false"
+    [showOpenFileButton]="false"
+    [showBookmarkButton]="false"
+    [language]="'en-us'"
+    [filenameForDownload]="'Offer.pdf'"
+  >
+  </ngx-extended-pdf-viewer>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-sm btn-primary" (click)="close()">Close</button>
+  </div>
+</div>

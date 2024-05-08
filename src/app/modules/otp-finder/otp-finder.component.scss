@@ -1,0 +1,121 @@
+.foot-btn {
+  color: white;
+  font-weight: 700;
+  background: #e4b168;
+}
+.app {
+  background-color: white;
+  width: 330px;
+  height: 390px;
+  margin: 2em auto;
+  border-radius: 5px;
+  // padding-top: 84px;
+  position: relative;
+  overflow: hidden;
+  overflow-y: hidden;
+  box-shadow: 0 6px 31px -2px rgba(0, 0, 0, 0.3);
+}
+h2 {
+  color: black;
+  text-align: center;
+  margin-bottom: 90px;
+}
+// .bg {
+//   width: 400px;
+//   height: 530px;
+//   background: -webkit-gradient(linear, left top, left bottom, from(#eac183ad), to(#b36f19ad));
+//   position: absolute;
+//   top: -5em;
+//   left: 0;
+//   right: 0;
+//   margin: auto;
+//   background-position: center;
+//   background-size: cover;
+//   background-repeat: no-repeat;
+//   -webkit-clip-path: ellipse(69% 46% at 48% 46%);
+//   clip-path: ellipse(69% 46% at 48% 46%);
+// }
+
+.container {
+  padding-top: 30px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  // right: 0;
+  width: 100%;
+  text-align: center;
+  // padding: 2em 2em 0;
+}
+
+input {
+  width: 100%;
+  padding: 13px 15px;
+  margin: 0.7em auto;
+  border-radius: 100px;
+  border: none;
+  font-family: "century-gothic", sans-serif !important;
+  outline: none;
+  background-color: #e7f0fe;
+  color: black;
+}
+input::placeholder {
+  color: black;
+  font-size: 13px;
+}
+input:-internal-autofill-selected {
+  background-color: white !important;
+}
+
+.inputs {
+  margin-top: -4em;
+  background-color: white;
+  border-radius: 10px;
+}
+
+footer {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 3em 2em 0;
+  text-align: center;
+}
+
+button {
+  width: 100%;
+  padding: 13px 15px;
+  border-radius: 100px;
+  border: none;
+  background: #257aa6;
+  font-family: "century-gothic", sans-serif !important;
+  outline: none;
+  color: #fff;
+}
+.otpNumber {
+  font-weight: bold;
+  text-align: start;
+  margin-top: 15px;
+  padding-inline-start: 10px;
+}
+@media screen and (max-width: 640px) {
+  .app {
+    width: 90%;
+    height: 90%;
+  }
+  .container {
+    padding-top: 0px;
+  }
+  h2 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .bg {
+    width: 450px;
+  }
+  .inputs {
+    margin: 0;
+  }
+  input,
+  button {
+    padding: 18px 15px;
+  }
+}

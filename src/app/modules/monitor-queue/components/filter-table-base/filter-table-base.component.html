@@ -1,0 +1,70 @@
+<div class="filter-table-wrapper en">
+  <div *ngIf="listFilters && listFilters?.size > 0" class="filter">
+    <p>
+      <i class="fas fa-filter"></i>
+      Filters
+    </p>
+    <div class="filter-content">
+      <ng-container *ngFor="let list of listFilters | keyvalue">
+        <app-chosen-filter *ngFor="let arr of list.value" [title]="list.key" [content]="arr" [apiName]="apiName"></app-chosen-filter>
+      </ng-container>
+      <app-chosen-filter clear="true" [apiName]="apiName"></app-chosen-filter>
+    </div>
+    <!-- <i class="fas fa-sort-up collapse-button"></i> //COLLAPSE BUTTON -->
+  </div>
+  <div class="table-wrapper en">
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      matSort
+      matSortActive="status"
+      matSortDirection="desc"
+      (matSortChange)="sortChange($event)"
+      #clientqueue
+    >
+      <ng-container [matColumnDef]="column" *ngFor="let column of dataKeys">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ formatHeaderName(column) }}
+          <i class="fas fa-filter" (click)="openFilterPopup($event, column)"></i>
+        </th>
+        <td mat-cell *matCellDef="let element" [ngClass]="{ 'status-color': column == 'status', schedule: column == 'country' }">
+          <ng-container *ngIf="column == 'status'">
+            <p *ngIf="element[column] == 'online'" class="status-bubble" style="color: #8aff75">⬤</p>
+            <p *ngIf="element[column] == 'away'" class="status-bubble" style="color: #ffd331">⬤</p>
+            <p *ngIf="element[column] == 'oncall'" class="status-bubble" style="color: red">⬤</p>
+            <p *ngIf="element[column] == 'offline'" class="status-bubble" style="color: #c0c0c0">⬤</p>
+            <p *ngIf="element[column] == 'inProgress'" class="status-bubble" style="color: #0198e1">⬤</p>
+            <p *ngIf="element[column] == 'pending'" class="status-bubble" style="color: #6901e1">⬤</p>
+          </ng-container>
+          <ng-container *ngIf="column == 'T' && element[column].T == 'FORCED'">
+            <div
+              style="width: 10px; height: 62px"
+              [ngClass]="{
+                'forced-queue': element[column].T == 'FORCED' && !element[column].external,
+                'forced-external-queue': element[column].T == 'FORCED' && element[column].external
+              }"
+            ></div>
+          </ng-container>
+          <ng-container *ngIf="column == 'position'">
+            <p
+              style="margin: 0; width: max-content; border-radius: 50px; padding: 3px 6px"
+              [ngStyle]="{
+                color: element[column].split('.')[0] == 'E' ? 'white' : 'black',
+                background: element[column].split('.')[0] == 'E' ? '#d6a55b' : 'white',
+                'box-shadow': element[column].split('.')[0] == 'E' ? '1px 1px 16px #efae49' : 'none'
+              }"
+            >
+              {{ element[column].split(".")[0] == "E" ? element[column].split(".")[1] : element[column] }}
+            </p>
+          </ng-container>
+          <ng-container *ngIf="column != 'position' && column != 'T'">
+            {{ element[column] }}
+          </ng-container>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="dataKeys; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: dataKeys"></tr>
+    </table>
+  </div>
+</div>

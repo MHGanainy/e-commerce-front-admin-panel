@@ -1,0 +1,604 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@swimlane/ngx-datatable/index.css";
+@import "~@swimlane/ngx-datatable/themes/material.scss";
+@import "~@swimlane/ngx-datatable/assets/icons.css";
+@import "~@angular/material/theming";
+
+@font-face {
+  font-family: "century-gothic";
+  src: url("assets/fonts/century-gothic.woff2") format("woff2") /* Super Modern Browsers */,
+    url("assets/fonts/century-gothic.woff") format("woff") /* Pretty Modern Browsers */,
+    url("assets/fonts/century-gothic.ttf") format("truetype") /* Safari, Android, iOS */;
+  unicode-range: "U+000-5FF", "U+600–6FF";
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "bahij";
+  src: url("assets/fonts/bahij.woff2") format("woff2") /* Super Modern Browsers */,
+    url("assets/fonts/bahij.woff") format("woff") /* Pretty Modern Browsers */,
+    url("assets/fonts/bahij.ttf") format("truetype") /* Safari, Android, iOS */;
+  font-display: swap;
+}
+
+.en {
+  font-family: "century-gothic", sans-serif !important;
+}
+
+.ar {
+  font-family: "bahij", "Arial" !important;
+}
+
+$ecommerce-template-typography: mat-typography-config(
+  $font-family: "century-gothic, sans-serif",
+  $headline: mat-typography-level(32px, 48px, 700),
+  $body-1: mat-typography-level(16px, 24px, 500),
+  $button: mat-typography-level(14px, 14px, 700),
+);
+
+@include angular-material-typography($ecommerce-template-typography);
+@include mat-core($ecommerce-template-typography);
+
+html,
+body {
+  height: 100%;
+  background-image: url("/assets/imgs/gate.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+body {
+  margin: 0;
+  font-family: "century-gothic", sans-serif !important;
+  font-style: normal;
+}
+.en {
+  font-family: "century-gothic", sans-serif !important;
+}
+
+.ar {
+  font-family: "bahij", "Arial" !important;
+}
+
+.modal-content {
+  max-height: 85vh !important;
+}
+.modal-dialog {
+  min-width: 30vw !important;
+}
+.navbar {
+  height: 8vh !important;
+}
+.navbar-dark .navbar-toggler {
+  background: linear-gradient(#e5b66f, #936831);
+  background: -webkit-linear-gradient(#e5b66f, #936831);
+  background: -moz-linear-gradient(#e5b66f, #936831);
+  background: -o-linear-gradient(#e5b66f, #936831);
+  background: -ms-linear-gradient(#e5b66f, #936831);
+}
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+label,
+p {
+  text-align: initial;
+}
+
+.button {
+  letter-spacing: 1px !important;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+  will-change: transform;
+}
+
+.button:active {
+  transform: scale(0.95);
+}
+.nav-tabs {
+  padding: 0 !important;
+}
+.navbar.navbar-dark .breadcrumb .nav-item .nav-link,
+.navbar.navbar-dark .navbar-nav .nav-item .nav-link {
+  transition: 0.35s;
+  font-weight: 700;
+  text-align: center !important;
+}
+.form-inline label {
+  justify-content: initial !important;
+}
+.nav-link {
+  text-align: center !important;
+}
+
+.card {
+  text-align: initial;
+}
+.mt-5,
+.my-5 {
+  margin-top: 5rem !important;
+}
+table {
+  text-align: initial !important;
+}
+
+button {
+  letter-spacing: 1px !important;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+  will-change: transform;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+// .btn,
+// .btn-info,
+.btn-gold {
+  color: #fff !important;
+  border: none !important;
+  font-size: 12px !important;
+  padding: 10px 10px !important;
+  background: #ebbb74; /* Old browsers */
+  background: -moz-linear-gradient(top, #ebbb74 0%, #926730 100%) !important; /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #ebbb74 0%, #926730 100%) !important; /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #ebbb74 0%, #926730 100%) !important; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebbb74', endColorstr='#926730',GradientType=0 ) !important; /* IE6-9 */
+}
+
+.btn-gold:disabled {
+  opacity: 0.5;
+}
+
+.btn-gold:hover {
+  color: black !important;
+  -webkit-text-fill-color: black !important;
+}
+
+.a,
+strong {
+  background: -webkit-linear-gradient(#e5b66f, #936831);
+  background: -moz-linear-gradient(#e5b66f, #936831);
+  background: -o-linear-gradient(#e5b66f, #936831);
+  background: -webkit-linear-gradient(#e5b66f, #936831);
+  background: linear-gradient(#e5b66f, #936831);
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.card-header:first-child {
+  border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+  background: -webkit-linear-gradient(#e5b66f, #936831) !important;
+  background: -moz-linear-gradient(#e5b66f, #936831) !important;
+  background: -o-linear-gradient(#e5b66f, #936831) !important;
+  background: -ms-linear-gradient(#e5b66f, #936831) !important;
+  background: linear-gradient(#e5b66f, #936831) !important;
+  color: #fff !important;
+}
+label {
+  display: block;
+}
+.carousel-indicators {
+  bottom: 10px !important;
+}
+
+.navbar {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  font-weight: 300;
+  background: #fff !important;
+}
+.pagination.pg-blue .page-item.active .page-link {
+  background-color: #fff;
+}
+.a {
+  font-size: 16px;
+  font-weight: 600;
+}
+.carousel-inner {
+  max-height: 75vh !important;
+}
+
+.view {
+  max-height: 380px !important;
+}
+.modal-header {
+  justify-content: center;
+  background: #dfe3e6;
+}
+.modal-footer {
+  background: #dfe3e6;
+}
+.modal-body {
+  max-height: 92vh;
+  overflow: auto;
+  padding: 15px 40px;
+}
+@media (max-width: 893px) {
+  .modal-body {
+    padding: 15px 5px;
+  }
+  .overlay-panel {
+    padding: 0 10px;
+  }
+  .modal-dialog {
+    min-width: 90vw !important;
+  }
+}
+
+//map style
+.leaflet-control-container {
+  bottom: 20% !important;
+  position: absolute !important;
+}
+
+.leaflet-container .leaflet-control-attribution,
+.leaflet-container .leaflet-control-scale {
+  visibility: hidden;
+}
+
+.leaflet-pane .leaflet-map-pane {
+  transform: translate3d(393.796px, 231px, 0px) !important;
+}
+
+// end map style
+
+// Cards
+.cards-container {
+  margin-top: 0px;
+
+  .card {
+    background-color: #f4f4f4e6;
+    min-height: 230px;
+    max-height: 230px;
+    margin-top: 69px;
+    cursor: pointer;
+    border: 1px solid #f4f4f4bf !important ;
+  }
+  .card:hover {
+    border: 1px solid #6793ad !important ;
+  }
+
+  .card-body {
+    padding: 10px 1.25rem !important;
+  }
+
+  .card .card-body {
+    color: #936831;
+  }
+
+  .card .card-body-icon {
+    color: #e5b66f;
+  }
+
+  .card .card-body:hover {
+    background: #b89260;
+    color: #ffffff;
+    border: 1px solid #e5b66f !important;
+  }
+
+  .card .card-body-icon {
+    font-size: 65px;
+  }
+  .card .card-body-description {
+    font-size: 14px;
+    padding-top: 40px;
+  }
+
+  .card .card-body:hover .card-body-icon,
+  .card .card-body:hover .card-body-description {
+    color: #ffffff;
+  }
+
+  h6 {
+    font-weight: 900;
+    line-height: 1;
+    word-break: break-word;
+    font-family: inherit;
+    font-size: 18px;
+  }
+
+  .b {
+    font-size: 50px;
+    float: right;
+    margin-top: 285px;
+  }
+}
+// End of Cards
+
+.valid-tooltip {
+  position: relative;
+  top: 0;
+  padding: 0;
+  margin-top: 0;
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0);
+}
+.md-dialog-container {
+  max-width: 100vw !important;
+  min-width: auto !important;
+}
+.col-md-6,
+.col-md-3,
+.col-md-2,
+.col-md-5,
+.col-md-7,
+.col-md-4,
+.col-md-8,
+.col-md-9,
+.col-md-10 {
+  text-align: initial !important;
+}
+.cdk-overlay-container {
+  z-index: 10000 !important;
+}
+
+.md-dialog-container {
+  .mat-dialog-container {
+    background-color: transparent;
+    box-shadow: none;
+    overflow: inherit;
+    padding: 0;
+  }
+}
+
+// .login-md-snack-container {
+.mat-snack-bar-container {
+  background: white !important;
+  color: black !important;
+  font-weight: 500 !important;
+}
+
+.mat-simple-snackbar {
+  font-size: 16px !important;
+}
+
+.verinputcolor {
+  outline-color: #ebbb74 !important;
+}
+
+.verinputcolorerror {
+  outline-color: #ebbb74 !important;
+}
+
+.login-input {
+  background-color: #eee;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  overflow: hidden;
+  // padding: 12px 15px;
+  margin: 8px 0;
+  width: 100%;
+}
+
+.login-input-is-invalid {
+  border-color: #dc3545;
+  padding-right: calc(1.5em + 0.75rem);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' hei…circle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right calc(0.375em + 0.1875rem) center;
+  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+.ngx-datatable {
+  height: 100%;
+  .visible {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .datatable-body {
+      flex: 1;
+      overflow-y: auto;
+
+      .datatable-body-row {
+        cursor: pointer;
+        .datatable-body-cell {
+          padding: 0.5rem 1.2rem;
+        }
+      }
+    }
+  }
+
+  .datatable-header {
+    background: linear-gradient(#e5b66f, #936831);
+  }
+
+  .datatable-header-cell {
+    white-space: normal !important;
+    display: flex !important;
+    align-items: center !important;
+    background: linear-gradient(#e5b66f, #936831);
+    font-weight: bold !important;
+    color: white !important;
+  }
+
+  .datatable-row-odd {
+    background: transparent;
+  }
+  .datatable-row-even {
+    background: #e5b66f24;
+  }
+
+  .datatable-row-detail {
+    background: #e5b66f24 !important;
+  }
+
+  .datatable-footer {
+    border-top: 1px solid #9368311f !important;
+    font-weight: bold !important;
+    color: #936831 !important;
+    // background: linear-gradient(#e5b66f, #936831);
+  }
+}
+#navbarCollapse {
+  height: 0px !important;
+}
+
+.datatable-header-cell,
+.datatable-body-cell {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+.dimmed {
+  opacity: 0.625;
+  cursor: not-allowed !important;
+}
+
+.error-message-box {
+  margin-top: 20px;
+
+  p {
+    color: red;
+  }
+}
+
+.cursor-text {
+  cursor: text;
+}
+
+.cursor-default {
+  cursor: default;
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+.cursor-disabled {
+  cursor: not-allowed;
+}
+
+.gold {
+  background: -webkit-gradient(linear, left top, left bottom, from(#e5b66f), to(#936831));
+  background: linear-gradient(#e5b66f, #936831);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-background {
+  background: linear-gradient(#e5b66f, #936831);
+  background: -webkit-linear-gradient(#e5b66f, #936831);
+  background: -moz-linear-gradient(#e5b66f, #936831);
+  background: -o-linear-gradient(#e5b66f, #936831);
+  background: -ms-linear-gradient(#e5b66f, #936831);
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.fa-1_15x {
+  font-size: 1.15em !important;
+}
+
+.fa-1_25x {
+  font-size: 1.25em !important;
+}
+
+app-custom-tooltip,
+app-loading-spinner {
+  display: contents;
+}
+
+mat-option.company-code-mat-option > .mat-option-text {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sales-report-formfield {
+  .mat-form-field-wrapper {
+    padding: 0 !important;
+    margin: 0 !important;
+
+    .mat-form-field-infix {
+      border: 0 !important;
+      padding: 10px;
+    }
+  }
+}
+
+.sales-details-container {
+  width: 60vw;
+  height: 93vh;
+  mat-dialog-container {
+    padding: 0 !important;
+  }
+}
+
+#salesman-info-wrapper {
+  .pure-checkbox input[type="checkbox"] + label:before {
+    left: 1px;
+    margin-top: -10px;
+    width: 19px;
+    height: 19px;
+  }
+
+  .pure-checkbox.selected-item input[type="checkbox"] + label:before {
+    background: linear-gradient(#e5b66f, #936831);
+    background: -webkit-linear-gradient(#e5b66f, #936831);
+    background: -moz-linear-gradient(#e5b66f, #936831);
+    background: -o-linear-gradient(#e5b66f, #936831);
+    background: -ms-linear-gradient(#e5b66f, #936831);
+  }
+
+  .pure-checkbox:not(.selected-item) input[type="checkbox"] + label:before {
+    background-color: rgb(225, 225, 225);
+  }
+
+  .pure-checkbox input[type="checkbox"]:checked + label:after {
+    border-color: white;
+    left: 5px;
+  }
+
+  .c-token {
+    padding: 4px 24px 4px 8px;
+    margin-right: 8px;
+
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  svg {
+    fill: darkgoldenrod;
+    vertical-align: baseline;
+  }
+}
+
+.mat-pseudo-checkbox-checked,
+.mat-pseudo-checkbox-indeterminate,
+.mat-accent .mat-pseudo-checkbox-checked,
+.mat-accent .mat-pseudo-checkbox-indeterminate {
+  background: #e5b66f !important;
+}
+
+.mat-focused .mat-form-field-label {
+  color: #e5b66f !important;
+}
+
+.mat-focused .mat-form-field-underline,
+.mat-focused .mat-form-field-ripple {
+  background: #e5b66f !important;
+}
+
+.mat-cell,
+.mat-footer-cell {
+  font-size: 14px;
+}
+
+.visa-wrapper {
+  .mat-sort-header-content {
+    font-weight: bold;
+    color: black;
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,28 @@
+<div id="users-config-bar" class="d-flex bd-highlight mb-3 payhead">
+  <div class="ml-auto bd-highlight">
+    <a class="p-2" (click)="onEditClicked()"><i class="fas fa-edit gold fa-1_15x"></i></a>
+    <a class="p-2" (click)="onDeleteClicked()"><i class="fa fa-trash gold fa-1_25x"></i></a>
+  </div>
+</div>
+
+<table id="role-users-table" class="table table-sm table-bordered table-hover text-center mb-0">
+  <thead>
+    <tr>
+      <th>
+        <input id="select-all-users-checkbox" class="cursor-pointer" type="checkbox" (click)="onAllUsersCheckClicked($event)" />
+      </th>
+      <th>Name</th>
+      <th>Username</th>
+      <!-- <th>Company Code</th> -->
+    </tr>
+  </thead>
+
+  <tbody class="table-body">
+    <tr *ngFor="let user of currentRoleUsers; let i = index" class="cursor-pointer" (click)="onUserClicked(i)">
+      <td><input type="checkbox" class="cursor-pointer" [(ngModel)]="selectedUsersFlags[i]" /></td>
+      <td>{{ user.user.firstName }} {{ user.user.lastName }}</td>
+      <td>{{ user.user.email }}</td>
+      <!-- <td>{{ user.companyCodeObj.compCode ? user.companyCodeObj.compCodeText + " (" + user.companyCodeObj.compCode + ")" : "—" }}</td> -->
+    </tr>
+  </tbody>
+</table>

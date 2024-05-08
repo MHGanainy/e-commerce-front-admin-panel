@@ -1,0 +1,143 @@
+<div class="salesReport page-bg">
+  <div class="head-card">
+    <h2 style="margin: auto; font-weight: bold">Appointment History</h2>
+  </div>
+
+  <mat-card class="filter-wrapper">
+    <form class="filter-inputs" [formGroup]="appointmentHistory" (ngSubmit)="onSearchClicked()">
+      <select class="form-control form-control-sm" formControlName="sales_agent_id">
+        <option value="null">All Sales Agents</option>
+        <option *ngFor="let agent of salesAgents" [value]="agent._id">{{ agent.firstName }} {{ agent.lastName }}</option>
+      </select>
+      <select class="form-control form-control-sm" formControlName="project_id">
+        <option value="null">All Projects</option>
+        <option value="131">Celia</option>
+        <option value="111">Madinaty</option>
+        <option value="121">Privado</option>
+        <option value="171">Noor</option>
+      </select>
+
+      <select class="form-control form-control-sm" formControlName="SalesCylce_id">
+        <option value="null">All Sales Phase</option>
+        <option value="Z12">No answer</option>
+        <option value="Z08">Not interested</option>
+        <option value="Z09">Qualified</option>
+        <option value="Z10">Committed</option>
+        <option value="Z11">Declined</option>
+        <option value="Z06">closed</option>
+      </select>
+
+      <mat-form-field appearance="outline" class="sales-report-formfield">
+        <input matInput placeholder="Start date" formControlName="dateFrom" [matDatepicker]="picker1" />
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="sales-report-formfield">
+        <input matInput placeholder="End date" formControlName="dateTo" [matDatepicker]="picker2" />
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+      <button type="submit" class="btn btn-gold">Search</button>
+      <!-- <button type="button" style="margin-left: 20px" (click)="exportExcel()" class="btn btn-gold">Export to excel</button> -->
+      <div class="excel-wrapper" (click)="exportExcel()">
+        <img src="assets/imgs/sheets.png" class="excel" />
+        <p style="margin: auto; font-weight: bold">Export</p>
+      </div>
+    </form>
+    <div class="tablewrapper">
+      <app-loading-spinner *ngIf="loading"></app-loading-spinner>
+      <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="country">
+          <th mat-header-cell *matHeaderCellDef>Country</th>
+          <td mat-cell *matCellDef="let element">{{ element.country }}</td>
+        </ng-container>
+        <ng-container matColumnDef="apppointmentDate">
+          <th mat-header-cell *matHeaderCellDef>Apppointment date</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.appointmentDate }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="customerSAP">
+          <th mat-header-cell *matHeaderCellDef>Customer SAP</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.customerSAP }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="customerName">
+          <th mat-header-cell *matHeaderCellDef>Customer name</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.customerName }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="customerMobile">
+          <th mat-header-cell *matHeaderCellDef>Customer mobile</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.customerMobile }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="project">
+          <th mat-header-cell *matHeaderCellDef>Project</th>
+          <td mat-cell *matCellDef="let element">
+            {{
+              element.project == "171"
+                ? "Noor"
+                : element.project == "121"
+                ? "Privado"
+                : element.project == "111"
+                ? "Madinaty"
+                : element.project == "131"
+                ? "Celia"
+                : null
+            }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="salesman">
+          <th mat-header-cell *matHeaderCellDef>salesman</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.salesMan }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="salesPhase">
+          <th mat-header-cell *matHeaderCellDef>sales Phase</th>
+          <td mat-cell *matCellDef="let element">
+            {{
+              element.salesCycle == "Z12"
+                ? "No answer"
+                : element.salesCycle == "Z08"
+                ? "Not interested"
+                : element.salesCycle == "Z09"
+                ? "Qualified"
+                : element.salesCycle == "Z10"
+                ? "Committed"
+                : element.salesCycle == "Z11"
+                ? "Declined"
+                : element.salesCycle == "Z06"
+                ? "closed"
+                : null
+            }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="utmSource">
+          <th mat-header-cell *matHeaderCellDef>Utm source</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.utmSource }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="note">
+          <th mat-header-cell *matHeaderCellDef>Note</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.note }}
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+    <mat-paginator
+      #paginator
+      showFirstLastButtons
+      [pageSize]="50"
+      [pageSizeOptions]="[5, 10, 25, 50, 75, 100, 250, 500, 1000]"
+    ></mat-paginator>
+  </mat-card>
+</div>

@@ -1,0 +1,11 @@
+<div class="content-wrapper">
+  <mat-card-title>{{ columnName }}</mat-card-title>
+  <mat-form-field class="example-form-field">
+    <mat-label>Search</mat-label>
+    <input matInput type="text" (keyup)="search($event)" />
+  </mat-form-field>
+  <mat-selection-list [(ngModel)]="selectedItems" #items>
+    <mat-list-option *ngFor="let item of searchListData" [value]="item">{{ item }}</mat-list-option>
+  </mat-selection-list>
+  <button type="submit" class="btn btn-gold" (click)="closePopup()">Done</button>
+</div>

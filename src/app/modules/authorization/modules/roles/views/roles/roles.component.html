@@ -1,0 +1,62 @@
+<div class="container">
+  <!-- Loading Spinner -->
+  <app-loading-spinner *ngIf="isRolesLoading || isUsersLoading; else dataLoaded"></app-loading-spinner>
+
+  <ng-template #dataLoaded>
+    <div class="grid-container">
+      <div id="left-grid-item">
+        <p class="h4 mb-3 text-center">Roles</p>
+        <ul class="list-group">
+          <li *ngFor="let role of rolesArr; let i = index" class="list-group-item d-flex justify-content-between"
+            [ngClass]="{ selected: role === selectedRole }" (click)="onRoleClicked(i)">
+            <span style="    font-weight: 600;">{{ role.roleText }}</span><br />
+            <span class="rol-sm">{{ role._id }}</span>
+          </li>
+          <h5 *ngIf="!rolesArr || rolesArr.length === 0" class="mb-0 text-center">No Roles Found</h5>
+          <hr />
+          <li class="list-group-item" (click)="createRole()">
+            <a class="pr-2"><i class="fa fa-plus gold"></i></a>
+            &nbsp;
+            <span>Create New Role</span>
+          </li>
+        </ul>
+      </div>
+      <div *ngIf="selectedRole" id="right-top-grid-item">
+        <div id="role-info-section">
+          <p class="h5 mb-3 text-center">
+            <strong class="gold">{{ selectedRole.roleText }} ({{ selectedRole._id }})</strong>
+          </p>
+
+          <ul class="nav nav-tabs" id="role-tabs" role="tablist">
+            <li class="nav-item">
+              <a id="role-perms-tab" class="nav-link active" data-toggle="tab" href="#role-perms-tab-content" role="tab"
+                aria-controls="role-perms" aria-selected="true" (click)="currentTab = 'permissions'">
+                Role Permission
+              </a>
+            </li>
+            <li class="nav-item">
+              <a id="role-users-tab" class="nav-link" data-toggle="tab" href="#role-users-tab-content" role="tab"
+                aria-controls="role-users" aria-selected="false" (click)="currentTab = 'users'">
+                Role Users
+              </a>
+            </li>
+          </ul>
+          <div class="tab-content" id="role-tabs-content">
+            <div class="tab-pane show active" id="role-perms-tab-content" role="tabpanel"
+              aria-labelledby="role-perms-tab-content">
+              <authorization-role-permissions [role]="selectedRole"></authorization-role-permissions>
+            </div>
+            <div class="tab-pane" id="role-users-tab-content" role="tabpanel" aria-labelledby="role-users-tab-content">
+              <authorization-role-users [role]="selectedRole" [usersArr]="usersArr"></authorization-role-users>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Save All Button -->
+      <div id="right-bottom-grid-item" class="row mx-0 justify-content-end" style="padding: 0 15px">
+        <button class="btn btn-success" type="submit" (click)="saveAll()">Save All</button>
+      </div>
+    </div>
+  </ng-template>
+</div>

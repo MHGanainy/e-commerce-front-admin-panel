@@ -1,0 +1,26 @@
+<div id="perms-config-bar" class="d-flex bd-highlight mb-3 payhead">
+  <div class="ml-auto bd-highlight">
+    <a class="p-2" (click)="onEditClicked()"><i class="fas fa-edit gold fa-1_15x"></i></a>
+    <a class="p-2" (click)="onDeleteClicked()"><i class="fa fa-trash gold fa-1_25x"></i></a>
+  </div>
+</div>
+
+<table id="role-perms-table" class="table table-sm table-bordered table-hover text-center mb-0">
+  <thead>
+    <tr>
+      <th>
+        <input id="select-all-perms-checkbox" class="cursor-pointer" type="checkbox" (click)="onAllPermsCheckClicked($event)" />
+      </th>
+      <th>ID</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+
+  <tbody class="table-body">
+    <tr *ngFor="let perm of role.permissions; let i = index" class="cursor-pointer" (click)="onPermClicked(i)">
+      <td><input type="checkbox" class="cursor-pointer" [(ngModel)]="selectedPermsFlags[i]" /></td>
+      <td>{{ perm.permission }}</td>
+      <td>{{ perm.permissionText }}</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,189 @@
+{
+  "info": {
+    "_postman_id": "039f6c03-0632-4875-8c96-53e6c4118a6e",
+    "name": "TMG's Admin",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Role",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Cookie",
+            "value": "Authorization=eyJhbGciOiJIUzUxMiJ9.eyJmaXJzdE5hbWUiOiJaZXlhZCIsImxhc3ROYW1lIjoiUmFtYWRhbiIsInN1YiI6IjAxMTU0ODYwODQ3IiwicGVybWlzc2lvbnMiOltdLCJfaWQiOiI1Zjg0OTNjZDgyMzhiNzQwOTk5NGVlZjciLCJleHAiOjE2MzQzMDI4MjgsImlhdCI6MTYwMjc2NjgyOCwiZW1haWwiOiJ6ZXlhZCJ9.chiUEpbHo2N-qR5PLRaJ6UkefSDcANN110F6_XraiRVp4QRe3gh87vvbbpsHMunYcBqLgajqj149xEdmJaB9Yw",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"_id\": \"test_role\",\r\n    \"permissions\": [\r\n        {\r\n            \"permission\": \"SH_AL\",\r\n            \"permissionText\": \"access all\"\r\n        }\r\n    ],\r\n    \"roleText\": \"Test Role\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "api.tmgdevcic.com:4202/api/Role/createone",
+          "host": ["api", "tmgdevcic", "com"],
+          "port": "4202",
+          "path": ["api", "Role", "createone"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Users",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Cookie",
+            "type": "text",
+            "value": "Authorization=eyJhbGciOiJIUzUxMiJ9.eyJmaXJzdE5hbWUiOiJaZXlhZCIsImxhc3ROYW1lIjoiUmFtYWRhbiIsInN1YiI6IjAxMTU0ODYwODQ3IiwicGVybWlzc2lvbnMiOltdLCJfaWQiOiI1Zjg0OTNjZDgyMzhiNzQwOTk5NGVlZjciLCJleHAiOjE2MzQzMDI4MjgsImlhdCI6MTYwMjc2NjgyOCwiZW1haWwiOiJ6ZXlhZCJ9.chiUEpbHo2N-qR5PLRaJ6UkefSDcANN110F6_XraiRVp4QRe3gh87vvbbpsHMunYcBqLgajqj149xEdmJaB9Yw"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "[\r\n    {\r\n        \"_id\": \"5f8493cd8238b7409994eef7\",\r\n        \"roles\": [\r\n            {\r\n                \"compCode\": \"2000\",\r\n                \"compCodeText\": \"tmg1\",\r\n                \"role\": {\r\n                    \"_id\": \"ADMIN\",\r\n                    \"permissions\": [\r\n                        {\r\n                            \"permission\": \"SH_AL\",\r\n                            \"permissionText\": \"access all\"\r\n                        }\r\n                    ],\r\n                    \"roleText\": \"ADMIN\"\r\n                }\r\n            }\r\n        ]\r\n    }\r\n]",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "api.tmgdevcic.com:4202/api/User/addRoleToUsers",
+          "host": ["api", "tmgdevcic", "com"],
+          "port": "4202",
+          "path": ["api", "User", "addRoleToUsers"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Roles",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Cookie",
+            "type": "text",
+            "value": "Authorization=eyJhbGciOiJIUzUxMiJ9.eyJmaXJzdE5hbWUiOiJaZXlhZCIsImxhc3ROYW1lIjoiUmFtYWRhbiIsInN1YiI6IjAxMTU0ODYwODQ3IiwicGVybWlzc2lvbnMiOltdLCJfaWQiOiI1Zjg0OTNjZDgyMzhiNzQwOTk5NGVlZjciLCJleHAiOjE2MzQzMDI4MjgsImlhdCI6MTYwMjc2NjgyOCwiZW1haWwiOiJ6ZXlhZCJ9.chiUEpbHo2N-qR5PLRaJ6UkefSDcANN110F6_XraiRVp4QRe3gh87vvbbpsHMunYcBqLgajqj149xEdmJaB9Yw"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"_id\": \"ADMIN\",\r\n    \"roleText\": \"ADMIN\",\r\n    \"permissions\": [\r\n        {\r\n            \"permission\": \"SH_AL\",\r\n            \"permissionText\": \"access all\"\r\n        },\r\n        {\r\n            \"permission\": \"BANK_TRANSFER_TILE\",\r\n            \"permissionText\": \"access all bank transactions\"\r\n        }\r\n    ]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "api.tmgdevcic.com:4202/api/Role/update",
+          "host": ["api", "tmgdevcic", "com"],
+          "port": "4202",
+          "path": ["api", "Role", "update"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Users",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Cookie",
+            "type": "text",
+            "value": "Authorization=eyJhbGciOiJIUzUxMiJ9.eyJmaXJzdE5hbWUiOiJaZXlhZCIsImxhc3ROYW1lIjoiUmFtYWRhbiIsInN1YiI6IjAxMTU0ODYwODQ3IiwicGVybWlzc2lvbnMiOltdLCJfaWQiOiI1Zjg0OTNjZDgyMzhiNzQwOTk5NGVlZjciLCJleHAiOjE2MzQzMDI4MjgsImlhdCI6MTYwMjc2NjgyOCwiZW1haWwiOiJ6ZXlhZCJ9.chiUEpbHo2N-qR5PLRaJ6UkefSDcANN110F6_XraiRVp4QRe3gh87vvbbpsHMunYcBqLgajqj149xEdmJaB9Yw"
+          }
+        ],
+        "url": {
+          "raw": "api.tmgdevcic.com:4202/api/User/getall",
+          "host": ["api", "tmgdevcic", "com"],
+          "port": "4202",
+          "path": ["api", "User", "getall"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Roles",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Cookie",
+            "type": "text",
+            "value": "Authorization=eyJhbGciOiJIUzUxMiJ9.eyJmaXJzdE5hbWUiOiJaZXlhZCIsImxhc3ROYW1lIjoiUmFtYWRhbiIsInN1YiI6IjAxMTU0ODYwODQ3IiwicGVybWlzc2lvbnMiOltdLCJfaWQiOiI1Zjg0OTNjZDgyMzhiNzQwOTk5NGVlZjciLCJleHAiOjE2MzQzMDI4MjgsImlhdCI6MTYwMjc2NjgyOCwiZW1haWwiOiJ6ZXlhZCJ9.chiUEpbHo2N-qR5PLRaJ6UkefSDcANN110F6_XraiRVp4QRe3gh87vvbbpsHMunYcBqLgajqj149xEdmJaB9Yw"
+          }
+        ],
+        "url": {
+          "raw": "api.tmgdevcic.com:4202/api/Role/getall",
+          "host": ["api", "tmgdevcic", "com"],
+          "port": "4202",
+          "path": ["api", "Role", "getall"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Permissions",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Cookie",
+            "type": "text",
+            "value": "Authorization=eyJhbGciOiJIUzUxMiJ9.eyJmaXJzdE5hbWUiOiJaZXlhZCIsImxhc3ROYW1lIjoiUmFtYWRhbiIsInN1YiI6IjAxMTU0ODYwODQ3IiwicGVybWlzc2lvbnMiOltdLCJfaWQiOiI1Zjg0OTNjZDgyMzhiNzQwOTk5NGVlZjciLCJleHAiOjE2MzQzMDI4MjgsImlhdCI6MTYwMjc2NjgyOCwiZW1haWwiOiJ6ZXlhZCJ9.chiUEpbHo2N-qR5PLRaJ6UkefSDcANN110F6_XraiRVp4QRe3gh87vvbbpsHMunYcBqLgajqj149xEdmJaB9Yw"
+          }
+        ],
+        "url": {
+          "raw": "api.tmgdevcic.com:4202/api/Utilities/getUtilList?utilID=Permissions",
+          "host": ["api", "tmgdevcic", "com"],
+          "port": "4202",
+          "path": ["api", "Utilities", "getUtilList"],
+          "query": [
+            {
+              "key": "utilID",
+              "value": "Permissions"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Company Code",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Cookie",
+            "type": "text",
+            "value": "Authorization=eyJhbGciOiJIUzUxMiJ9.eyJmaXJzdE5hbWUiOiJaZXlhZCIsImxhc3ROYW1lIjoiUmFtYWRhbiIsInN1YiI6IjAxMTU0ODYwODQ3IiwicGVybWlzc2lvbnMiOltdLCJfaWQiOiI1Zjg0OTNjZDgyMzhiNzQwOTk5NGVlZjciLCJleHAiOjE2MzQzMDI4MjgsImlhdCI6MTYwMjc2NjgyOCwiZW1haWwiOiJ6ZXlhZCJ9.chiUEpbHo2N-qR5PLRaJ6UkefSDcANN110F6_XraiRVp4QRe3gh87vvbbpsHMunYcBqLgajqj149xEdmJaB9Yw"
+          }
+        ],
+        "url": {
+          "raw": "api.tmgdevcic.com:4202/api/Utilities/getUtilList?utilID=CompanyCode",
+          "host": ["api", "tmgdevcic", "com"],
+          "port": "4202",
+          "path": ["api", "Utilities", "getUtilList"],
+          "query": [
+            {
+              "key": "utilID",
+              "value": "CompanyCode"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "protocolProfileBehavior": {}
+}

@@ -1,0 +1,33 @@
+.image-viewer-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 80vw;
+    height: auto;
+  }
+
+  #map {
+    width: 100vw !important;
+    height: 80vh !important;
+    // border: 1px solid #ccc;
+    // border-radius: 6px;
+    margin-bottom: 10px;
+  }
+}
+
+.leaflet-container {
+  background: transparent;
+}
+
+.btn-outline-secondary {
+  background-color: #fff;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #6c757d !important;
+}

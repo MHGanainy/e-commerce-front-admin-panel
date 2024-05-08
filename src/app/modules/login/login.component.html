@@ -1,0 +1,59 @@
+<div class="app">
+  <div class="bg"></div>
+
+  <form #loginForm="ngForm" (ngSubmit)="submitLoginForm(loginForm)">
+    <header>
+      <img lazyLoad="../../../assets/imgs/user.png" id="icon" alt="User Icon" style="max-height: 10rem; max-width: 10rem" />
+    </header>
+
+    <div class="inputs">
+      <input
+        id="login"
+        class="fadeIn second"
+        name="username"
+        ngModel
+        placeholder="Username"
+        required
+        #username="ngModel"
+        [ngClass]="{
+          'custom-invalid-input': username.invalid && (username.dirty || username.touched)
+        }"
+      />
+      <div *ngIf="username.invalid && username.touched" class="mb-3">
+        <span class="text-danger">Username Field Can't be Empty.</span>
+      </div>
+      <!-- Password Field -->
+      <input
+        type="password"
+        id="password"
+        class="fadeIn third"
+        name="password"
+        ngModel
+        placeholder="Password"
+        required
+        #password="ngModel"
+        [ngClass]="{
+          'custom-invalid-input': password.invalid && (password.dirty || password.touched)
+        }"
+      />
+      <div *ngIf="password.invalid && password.touched" class="font-bold">
+        <span class="text-danger">Password Field Can't be Empty.</span>
+      </div>
+      <p class="light" (click)="changePassword()">Change Password</p>
+    </div>
+    <footer>
+      <button
+        type="submit"
+        class="fadeIn fourth d-block mr-auto ml-auto foot-btn"
+        [disabled]="!loginForm.valid"
+        style="margin-bottom: 2rem !important"
+      >
+        Login
+      </button>
+      <!-- <p>Don't have an account? <a routerLink="/register">Sign Up</a></p> -->
+    </footer>
+  </form>
+  <div id="formFooter" *ngIf="loginFailed">
+    <span class="text-danger" style="font-weight: bold">Incorrect Username or Password</span>
+  </div>
+</div>

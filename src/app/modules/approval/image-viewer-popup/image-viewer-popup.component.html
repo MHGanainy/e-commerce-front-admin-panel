@@ -1,0 +1,44 @@
+<div class="image-viewer-container" #imageviewerwrapper>
+  <!-- <div class="loading" *ngIf="imageLoading && !errorLoading" style="position: absolute"> 
+    
+    <h1>
+      <img src="/assets/imgs/Spinner-1s-200px.svg" alt="loading..." srcset="" style="width: auto" />
+    </h1>
+  </div> -->
+  <app-loading-spinner *ngIf="imageLoading && !errorLoading"></app-loading-spinner>
+  <h1 *ngIf="!imageLoading && errorLoading">error loading image</h1>
+
+  <div id="map" #map style="border-radius: 6px 6px 0 0; margin-right: 1.5rem; margin-left: 1.5rem">
+    <div class="leaflet-control-container leaflet-top leaflet-right">
+      <div class="leaflet-bar leaflet-control">
+        <button type="button" class="btn btn-outline-secondary font-weight-bolder" (click)="closeDialog()" style="border-width: 2px">
+          &times;
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal-footer justify-content-center"
+  style="border-radius: 0 0 6px 6px; margin-right: 1.5rem; margin-left: 1.5rem"
+  *ngIf="button"
+>
+  <button
+    *ngIf="permissionGuard.checkPerms(['BANK_RELEASE'])"
+    type="button"
+    class="btn btn-success mr-4"
+    [disabled]="data?.disableRelease"
+    (click)="acceptTransaction()"
+  >
+    Release
+  </button>
+  <button
+    *ngIf="showReject && permissionGuard.checkPerms(['BANK_REJECT'])"
+    type="button"
+    class="btn btn-danger"
+    (click)="rejectTransaction()"
+  >
+    Reject
+  </button>
+</div>

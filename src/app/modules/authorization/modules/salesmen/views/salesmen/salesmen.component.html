@@ -1,0 +1,54 @@
+<div class="container">
+  <!-- Loading Spinner -->
+  <app-loading-spinner *ngIf="isLoading; else dataLoaded"></app-loading-spinner>
+
+  <ng-template #dataLoaded>
+    <table class="table table-sm table-bordered table-hover text-center mb-0">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>SAP Employee Number</th>
+          <th>C4C</th>
+          <th>Languages</th>
+          <th>Projects</th>
+          <th>Activated</th>
+          <th class="no-gold">
+            <button class="btn btn-success" type="button" (click)="onCreateNewClicked()">
+              Add New
+              <a class="pl-1"><i class="fa fa-plus"></i></a>
+            </button>
+          </th>
+        </tr>
+      </thead>
+
+      <tbody class="table-body">
+        <Caption *ngIf="!(salesmen && salesmen.length)">No Data</Caption>
+
+        <tr *ngFor="let salesman of salesmen; let i = index">
+          <td>{{ salesman.firstName + " " + salesman.lastName }}</td>
+          <td>{{ salesman.email }}</td>
+          <td>{{ salesman.sapemployeeNumber }}</td>
+          <td>{{ salesman.c4c }}</td>
+          <td>
+            <span *ngFor="let lang of getPropertyValues(salesman, 'language')" class="lang-span">{{ lang }}</span>
+          </td>
+          <td>
+            <span *ngFor="let proj of getPropertyValues(salesman, 'project')" class="proj-span">{{ proj }}</span>
+          </td>
+          <td>{{ salesman.deActivate ? "Deactivated" : "Activated" }}</td>
+          <td>
+            <button class="btn btn-primary" type="button" (click)="onEditClicked(i)">
+              Edit
+              <a class="pl-1"><i class="fa fa-edit"></i></a>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- <div class="row mx-0 justify-content-center align-items-center">
+      <app-pagination [currentPage]="currentPage" [numOfPages]="numOfPages"></app-pagination>
+    </div> -->
+  </ng-template>
+</div>

@@ -1,0 +1,87 @@
+<div id="unitDetailsModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h3>User Details</h3>
+      </div>
+      <!-- End of Modal Header -->
+
+      <!-- Modal Body -->
+      <div class="modal-body px-3">
+        <app-loading-spinner *ngIf="loading"></app-loading-spinner>
+        <div class="info-head data">
+          <div>
+            <span class="font-weight-bold">Sap Partner ID: </span>
+            <span class="font-weight-bold">{{ user.sapPartnerID }} </span>
+          </div>
+          <div>
+            <span class="font-weight-bold">Mobile: </span>
+            <span class="font-weight-bold">{{ user.mobile }} </span>
+          </div>
+          <div *ngIf="!edit" class="reference">
+            <span class="font-weight-bold">Full name: </span>
+            <input class="form-control" [value]="fullname" [disabled]="!edit" type="text" />
+          </div>
+          <div *ngIf="edit">
+            <span class="font-weight-bold">First Name: </span>
+            <input class="form-control" [(ngModel)]="user.firstName" [disabled]="!edit" type="text" />
+          </div>
+          <div *ngIf="edit">
+            <span class="font-weight-bold">Last Name: </span>
+            <input class="form-control" [(ngModel)]="user.lastName" [disabled]="!edit" type="text" />
+          </div>
+          <div>
+            <span class="font-weight-bold">Identification Type: </span>
+            <select class="form-control" [disabled]="!edit" [(ngModel)]="user.identificationType">
+              <option value="FS0001">ID number</option>
+              <option value="FS0002">Passport</option>
+            </select>
+          </div>
+          <div>
+            <span class="font-weight-bold">National ID: </span>
+            <input class="form-control" [(ngModel)]="user.nationalID" [disabled]="!edit" type="text" />
+          </div>
+          <div class="reference">
+            <span class="font-weight-bold">Address: </span>
+            <input class="form-control" [(ngModel)]="user.address" [disabled]="!edit" type="text" />
+          </div>
+          <div>
+            <span class="font-weight-bold">Country: </span>
+            <select [(ngModel)]="user.country" class="form-control" [disabled]="!edit">
+              <option *ngFor="let countryObj of countries" [value]="countryObj.cc">{{ countryObj.country }}</option>
+            </select>
+          </div>
+          <div *ngIf="user.country == 'EG'">
+            <span class="font-weight-bold">City: </span>
+            <select [(ngModel)]="user.city" class="form-control" [disabled]="!edit">
+              <option *ngFor="let city of cities" [value]="city.Code">{{ city.City }}</option>
+            </select>
+          </div>
+          <div>
+            <span class="font-weight-bold">Area: </span>
+            <input class="form-control" [(ngModel)]="user.region" [disabled]="!edit" type="text" />
+          </div>
+          <div *ngIf="user.country == 'US' || user.country == 'CA'">
+            <span class="font-weight-bold">State: </span>
+            <select [(ngModel)]="user.state" class="form-control" [disabled]="!edit">
+              <option value="null">Select State</option>
+              <option *ngFor="let state of states" [value]="state.abbreviation">{{ state.name }}</option>
+            </select>
+            <span class="font-weight-bold">PostalCode: </span>
+            <input class="form-control" [(ngModel)]="user.postalCode" type="text" [disabled]="!edit" />
+          </div>
+        </div>
+      </div>
+      <!-- End Of Modal Body -->
+
+      <!-- Modal Footer -->
+      <div class="modal-footer">
+        <button *ngIf="!edit" (click)="onEdit()" class="btn btn-gold" type="button" [disabled]="loading">Edit</button>
+        <button *ngIf="edit" (click)="onUpdate(null)" class="btn btn-gold" type="button" [disabled]="loading">Update</button>
+        <button (click)="close(null)" class="btn btn-gold" type="button" [disabled]="loading">Close</button>
+      </div>
+      <!-- End of Modal Footer -->
+    </div>
+  </div>
+</div>

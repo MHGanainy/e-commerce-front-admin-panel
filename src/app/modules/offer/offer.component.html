@@ -1,0 +1,27 @@
+<div class="app">
+  <div class="bg"></div>
+  <div class="container">
+    <h2>Extend Offer Time</h2>
+    <div class="inputs">
+      <input placeholder="Offer ID" id="offerID" name="offerID" [formControl]="offerID" />
+      <div *ngIf="offerID.invalid && offerID.touched" class="mb-3">
+        <span class="text-danger">Enter a valid offer ID Number</span>
+      </div>
+      <div *ngIf="error" class="mb-3">
+        <span class="text-danger">{{ error }}</span>
+      </div>
+    </div>
+    <app-loading-spinner *ngIf="loading"></app-loading-spinner>
+    <footer>
+      <button
+        type="submit"
+        class="fadeIn fourth d-block mr-auto ml-auto foot-btn"
+        [disabled]="!offerID.value || !offerID.valid"
+        style="margin-bottom: 2rem !important"
+        (click)="submitOfferID()"
+      >
+        Extend
+      </button>
+    </footer>
+  </div>
+</div>

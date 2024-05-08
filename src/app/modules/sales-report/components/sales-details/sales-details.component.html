@@ -1,0 +1,80 @@
+<div class="sales-detail-wrapper">
+  <div class="modal-body">
+    <div class="sales-rep-info">
+      <h1>{{ data.row?.name }}</h1>
+      <div class="basic-info">
+        <div class="status-info">
+          <p>
+            <span>Total Online Time: </span
+            >{{ data.row?.salesmanTotal.statusTimer ? timeFunctions.formatTime(data.row?.salesmanTotal.statusTimer[3].timeCounter) : "0" }}
+          </p>
+          <p>
+            <span>Total On-Call Time: </span
+            >{{ data.row?.salesmanTotal.statusTimer ? timeFunctions.formatTime(data.row?.salesmanTotal.statusTimer[4].timeCounter) : "0" }}
+          </p>
+          <!-- <p>
+            <span>Total Away Time: </span
+            >{{ data.row?.salesmanTotal.statusTimer ? timeFunctions.formatTime(data.row?.salesmanTotal.statusTimer[0].timeCounter) : "0" }}
+          </p> -->
+        </div>
+        <div class="call-info">
+          <p><span>Total Accepted Calls: </span>{{ data.row?.salesmanTotal.numOfAccept ? data.row?.salesmanTotal.numOfAccept : "0" }}</p>
+          <p><span>Total Rejected Calls: </span>{{ data.row?.salesmanTotal.numOfReject ? data.row?.salesmanTotal.numOfReject : "0" }}</p>
+          <p>
+            <span>Average Call Time: </span
+            >{{ data.row?.salesmanTotal.statusTimer ? timeFunctions.formatTime(data.row?.salesmanTotal.statusTimer[4].timeCounter) : "0" }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="daily-records">
+      <table mat-table [dataSource]="dataSource">
+        <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef>Date</th>
+          <td mat-cell *matCellDef="let element">{{ element.localDate }}</td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="oncall">
+          <th mat-header-cell *matHeaderCellDef>On-Call</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.statusTimer ? timeFunctions.formatTime(element.statusTimer[4].timeCounter) : "0" }}
+          </td>
+        </ng-container>
+        <!-- <ng-container matColumnDef="offline">
+          <th mat-header-cell *matHeaderCellDef>Offline</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.statusTimer ? timeFunctions.formatTime(element.statusTimer[1].timeCounter) : "0" }}
+          </td>
+        </ng-container> -->
+        <ng-container matColumnDef="online">
+          <th mat-header-cell *matHeaderCellDef>Online</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.statusTimer ? timeFunctions.formatTime(element.statusTimer[3].timeCounter) : "0" }}
+          </td>
+        </ng-container>
+        <!-- <ng-container matColumnDef="away">
+          <th mat-header-cell *matHeaderCellDef>Away</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.statusTimer ? timeFunctions.formatTime(element.statusTimer[0].timeCounter) : "0" }}
+          </td>
+        </ng-container> -->
+        <ng-container matColumnDef="total_accept">
+          <th mat-header-cell *matHeaderCellDef>Total Accepted</th>
+          <td mat-cell *matCellDef="let element">{{ element.numOfAccept }}</td>
+        </ng-container>
+        <ng-container matColumnDef="total_reject">
+          <th mat-header-cell *matHeaderCellDef>Total Rejected</th>
+          <td mat-cell *matCellDef="let element">{{ element.numOfReject }}</td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[7]" showFirstLastButtons></mat-paginator>
+    </div>
+  </div>
+</div>

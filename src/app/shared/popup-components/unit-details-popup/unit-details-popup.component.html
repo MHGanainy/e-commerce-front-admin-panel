@@ -1,0 +1,32 @@
+<div id="unitDetailsModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h3>Unit Details</h3>
+      </div>
+      <!-- End of Modal Header -->
+
+      <!-- Modal Body -->
+      <div class="modal-body px-3">
+        <div class="info-head">
+          <div class="row form-inline mb-2" *ngFor="let row of infoRows">
+            <div class="col-md-6" *ngFor="let property of row">
+              <span class="font-weight-bold">{{ property[0] }}: </span>
+              <span>{{ property[1] }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Of Modal Body -->
+
+      <!-- Modal Footer -->
+      <div class="modal-footer">
+        <button (click)="close()" class="btn btn-gold" type="button">
+          Close
+        </button>
+      </div>
+      <!-- End of Modal Footer -->
+    </div>
+  </div>
+</div>

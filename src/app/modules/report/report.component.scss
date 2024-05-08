@@ -1,0 +1,11 @@
+.card-overflow {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(5, 1fr);
+  grid-column-gap: 20px;
+
+  .card {
+    margin-top: 0px;
+    margin-bottom: 30px;
+  }
+}

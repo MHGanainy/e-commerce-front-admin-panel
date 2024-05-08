@@ -1,0 +1,59 @@
+.container {
+  padding: 1rem;
+  border: 1px solid #dee2e6;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  background: #eeeeee;
+  position: relative;
+
+  max-width: 90vw;
+  height: calc(100vh - 8vh - 1.5rem - 1.5rem);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  overflow-y: auto;
+
+  table {
+    background-color: white;
+
+    thead {
+      th:not(.no-gold) {
+        background: -webkit-gradient(linear, left top, left bottom, from(#e5b66f), to(#936831));
+        background: linear-gradient(#e5b66f, #936831);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+    tbody {
+      tr {
+        td {
+          span.lang-span {
+            text-transform: uppercase;
+          }
+
+          span.proj-span {
+            text-transform: capitalize;
+          }
+
+          span:not(:last-child)::after {
+            content: ", ";
+          }
+        }
+      }
+    }
+
+    th,
+    td {
+      vertical-align: middle;
+    }
+
+    button {
+      text-transform: initial;
+      margin: 0.25rem 0;
+    }
+  }
+}

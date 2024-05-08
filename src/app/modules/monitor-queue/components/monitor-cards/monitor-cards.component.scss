@@ -1,0 +1,49 @@
+.today-report-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  padding-bottom: 0px;
+
+  mat-card {
+    width: 290px;
+    height: 100px;
+    margin-inline-end: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding-top: 20px;
+
+    &:last-child {
+      margin-inline-end: 0px;
+    }
+    div {
+      display: flex;
+      flex-direction: column;
+      justify-content: stretch;
+      label {
+        color: black;
+        font-weight: bold;
+        font-size: 18px;
+        text-align: center;
+        margin: 0px;
+      }
+      h1 {
+        color: black;
+        font-size: 50px;
+        margin: 0;
+        font-weight: bold;
+      }
+    }
+    mat-icon {
+      width: 80px;
+      height: auto;
+      opacity: 0.3;
+      font-size: 80px;
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+.wrapper {
+  height: calc(100% - 8vh);
+  display: flex;
+  position: absolute;
+  width: 100%;
+  align-items: center;
+
+  .container {
+    padding: 25px 85px;
+    margin-top: -4vh;
+    border: 1px solid #dee2e6;
+    background: #eeeeee;
+
+    @media (max-width: 893px) {
+      padding: 25px 10px;
+    }
+  }
+}
+
+.jus-end {
+  display: flex;
+  justify-content: flex-end;
+}
+
+label {
+  background: -webkit-linear-gradient(#e5b66f, #936831);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+  font-size: 16px;
+}

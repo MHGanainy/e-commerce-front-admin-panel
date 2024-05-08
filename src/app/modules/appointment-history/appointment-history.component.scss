@@ -1,0 +1,77 @@
+.salesReport {
+  position: relative;
+
+  h2 {
+    text-align: center !important;
+    margin: 8px 0px;
+    // margin: 30px;
+  }
+
+  mat-card {
+    position: relative;
+    width: 96vw;
+    margin: 0 auto;
+    padding: 0;
+
+    .filter-inputs {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 15px;
+      // justify-content: space-evenly;
+
+      select {
+        width: 200px;
+        height: 40px;
+        margin-right: 20px;
+      }
+
+      mat-form-field {
+        margin-right: 20px;
+      }
+      .excel-wrapper {
+        display: flex;
+        cursor: pointer;
+        .excel {
+          width: 40px;
+          height: 36px;
+          margin-left: 20px;
+        }
+      }
+    }
+
+    .tablewrapper {
+      position: relative;
+      max-height: 55vh;
+      overflow-y: auto;
+      table {
+        width: 100%;
+
+        td {
+          cursor: pointer;
+        }
+
+        tr:hover {
+          background: wheat;
+        }
+      }
+    }
+  }
+}
+.page-bg {
+  position: relative;
+  min-height: 85vh;
+  width: 98%;
+  text-align: center;
+  margin: auto;
+  background: #ffffffeb;
+  border-radius: 5px;
+  margin-top: 25px;
+}
+
+.head-card {
+  text-align: center;
+  padding: 15px;
+  border-bottom: 1px solid #0000006b;
+  margin-bottom: 20px;
+}

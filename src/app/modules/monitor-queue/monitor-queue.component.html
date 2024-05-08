@@ -1,0 +1,33 @@
+<app-monitor-cards></app-monitor-cards>
+<div class="content-wrapper en">
+  <mat-card class="client-queue">
+    <div class="titleinfo">
+      <mat-card-title>Customer Queue</mat-card-title>
+      <div class="sync-wrapper">
+        <p>Last Sync {{ customersyncTime }}</p>
+        <i class="fas fa-sync-alt" (click)="getCustomerQueue()"></i>
+      </div>
+    </div>
+    <div class="full-table-wrapper">
+      <app-loading-spinner *ngIf="customerloading"></app-loading-spinner>
+      <app-filter-table-base
+        *ngIf="customerQueue.length > 0"
+        [tableData]="customerQueue"
+        apiName="ClientQueueFilters"
+      ></app-filter-table-base>
+    </div>
+  </mat-card>
+  <mat-card class="sales-list">
+    <div class="titleinfo">
+      <mat-card-title>Salesmen</mat-card-title>
+      <div class="sync-wrapper">
+        <p>Last Sync {{ salessyncTime }}</p>
+        <i class="fas fa-sync-alt" (click)="getSalesList()"></i>
+      </div>
+    </div>
+    <div class="full-table-wrapper">
+      <app-loading-spinner *ngIf="salesloading"></app-loading-spinner>
+      <app-filter-table-base *ngIf="salesQueue.length > 0" [tableData]="salesQueue" apiName="SalesListQueueFilters"></app-filter-table-base>
+    </div>
+  </mat-card>
+</div>

@@ -1,0 +1,48 @@
+<div class="container cards-container">
+  <div class="row justify-content-around">
+    <!-- View Users -->
+    <div class="col-md-3" *ngIf="user?.email != 'esedeek@tmg.com.eg'">
+      <div class="card">
+        <div class="card-body" routerLink="./admin-users">
+          <p class="card-description text-right"></p>
+          <div class="card-body-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="card-body-details">
+            <h6 class="card-title text-left">Admin Users</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- View Salesmen -->
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body" routerLink="./salesmen">
+          <p class="card-description text-right"></p>
+          <div class="card-body-icon">
+            <i class="fas fa-user-tie"></i>
+          </div>
+          <div class="card-body-details">
+            <h6 class="card-title text-left">Salesmen</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- View Roles -->
+    <div class="col-md-3" *ngIf="user?.email != 'esedeek@tmg.com.eg'">
+      <div class="card">
+        <div class="card-body" routerLink="./roles">
+          <p class="card-description text-right"></p>
+          <div class="card-body-icon">
+            <i class="fas fa-users-cog"></i>
+          </div>
+          <div class="card-body-details">
+            <h6 class="card-title text-left">Roles</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

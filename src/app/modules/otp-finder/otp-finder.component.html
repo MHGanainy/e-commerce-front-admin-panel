@@ -1,0 +1,25 @@
+<div class="app">
+  <div class="bg"></div>
+  <div class="container">
+    <h2>OTP Finder</h2>
+    <div class="inputs">
+      <input placeholder="Phone Number" id="phoneNumber" name="phoneNumber" [formControl]="phoneNumber" />
+      <div *ngIf="phoneNumber.invalid && phoneNumber.touched" class="mb-3">
+        <span class="text-danger">Enter a valid Phone Number</span>
+      </div>
+      <div class="otpNumber">Verification Code : {{ otp }}</div>
+    </div>
+    <app-loading-spinner *ngIf="loading"></app-loading-spinner>
+    <footer>
+      <button
+        type="submit"
+        class="fadeIn fourth d-block mr-auto ml-auto foot-btn"
+        [disabled]="!phoneNumber.value || !phoneNumber.valid"
+        style="margin-bottom: 2rem !important"
+        (click)="findOTP()"
+      >
+        Submit
+      </button>
+    </footer>
+  </div>
+</div>

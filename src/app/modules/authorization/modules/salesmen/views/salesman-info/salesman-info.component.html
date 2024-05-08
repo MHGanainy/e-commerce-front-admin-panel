@@ -1,0 +1,142 @@
+<div id="salesman-info-wrapper" class="wrapper">
+  <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+
+  <div class="container">
+    <!-- Header -->
+    <p class="h4 mb-4 text-center">{{ type === "new" ? "Add" : "Edit" }} Salesman</p>
+
+    <div class="form-row mb-4">
+      <!-- Full name -->
+      <div class="col">
+        <label>Full Name:</label>
+        <div class="input-group">
+          <input [(ngModel)]="fullName" name="fullName" type="text" id="RGfullName" class="form-control" />
+          <div class="valid-tooltip invalid-feedback">{{ fullNameErrorMsg }}</div>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="col">
+        <label>Email:</label>
+        <div class="input-group">
+          <input
+            #email="ngModel"
+            [(ngModel)]="salesman.email"
+            name="email"
+            type="email"
+            id="RGemail"
+            class="form-control"
+            email
+            [disabled]="type === 'edit'"
+          />
+          <div class="valid-tooltip invalid-feedback">{{ emailErrorMsg }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row mb-4">
+      <!-- SAP Employee Number -->
+      <div class="col">
+        <label>SAP Employee Number:</label>
+        <div class="input-group">
+          <input
+            [(ngModel)]="salesman.sapemployeeNumber"
+            name="sapemployeeNumber"
+            type="text"
+            id="RGsapemployeeNumber"
+            class="form-control"
+          />
+          <div class="valid-tooltip invalid-feedback">SAP Employee Number Field Can't Be Empty</div>
+        </div>
+      </div>
+
+      <!-- C4C -->
+      <div class="col">
+        <label>C4C:</label>
+        <div class="input-group">
+          <input [(ngModel)]="salesman.c4c" name="c4c" type="text" id="RGc4c" class="form-control" />
+          <div class="valid-tooltip invalid-feedback">C4C Field Can't Be Empty</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row mb-4">
+      <!-- Languages -->
+      <div class="col">
+        <label>Languages:</label>
+        <div class="input-group">
+          <angular2-multiselect
+            #languageMultiselect
+            id="RGlanguages"
+            #languageMultiselect
+            [data]="langDropdownList"
+            [(ngModel)]="selectedLangs"
+            [settings]="langDropdownSettings"
+            (keyup.enter)="languageMultiselect.toggleDropdown($event)"
+            (keyup.space)="languageMultiselect.toggleDropdown($event)"
+          ></angular2-multiselect>
+          <div class="valid-tooltip invalid-feedback">Languages Field Can't Be Empty</div>
+        </div>
+      </div>
+
+      <!-- Projects -->
+      <div class="col">
+        <label>Projects:</label>
+        <div class="input-group">
+          <angular2-multiselect
+            id="RGprojects"
+            #projectMultiselect
+            [data]="projectsDropdownList"
+            [(ngModel)]="selectedProjects"
+            [settings]="projectsDropdownSettings"
+            (keyup.enter)="projectMultiselect.toggleDropdown($event)"
+            (keyup.space)="projectMultiselect.toggleDropdown($event)"
+          ></angular2-multiselect>
+          <div class="valid-tooltip invalid-feedback">Projects Field Can't Be Empty</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row mb-4">
+      <!-- Password -->
+      <div class="col">
+        <label>Password:</label>
+        <div class="input-group">
+          <input [(ngModel)]="salesman.password" name="password" type="password" id="RGpassword" class="form-control" />
+          <div *ngIf="type === 'edit'" class="valid-tooltip invalid-feedback d-block text-secondary">
+            Note: Leave password field empty if you do not want to change it
+          </div>
+          <div class="valid-tooltip invalid-feedback">{{ passwordErrorMsg ? passwordErrorMsg : "Password Field Can't Be Empty" }}</div>
+        </div>
+      </div>
+      <!-- Confirm Password -->
+      <div class="col">
+        <label>Confirm Password:</label>
+        <div class="input-group">
+          <input
+            [(ngModel)]="salesman.confirmPassword"
+            name="confirmPassword"
+            type="password"
+            id="RGconfirmPassword"
+            class="form-control"
+          />
+          <div class="valid-tooltip invalid-feedback">
+            {{ passwordErrorMsg ? passwordErrorMsg : "Confirm Password Field Can't Be Empty" }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="error-message-box">
+      <p>{{ errorMsg }}</p>
+    </div>
+    <p><mat-checkbox [(ngModel)]="salesman.displayOnly">Display Only</mat-checkbox></p>
+    <!-- Sign up button -->
+    <div class="jus-end">
+      <button class="btn btn-activate" *ngIf="salesman?.deActivate" (click)="onDelete()" style="margin-right: 10px">Activate</button>
+      <button class="btn btn-danger" *ngIf="!salesman?.deActivate" (click)="onDelete()" style="margin-right: 10px">Deactivate</button>
+      <button class="btn btn-success" type="submit" (click)="onSubmit()">Submit</button>
+    </div>
+    <!-- </form> -->
+  </div>
+</div>

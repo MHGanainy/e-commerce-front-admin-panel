@@ -1,0 +1,57 @@
+<div
+  *ngIf="loading"
+  class="cdk-overlay-backdrop cdk-overlay-dark-backdrop cdk-overlay-backdrop-showing position-fixed"
+  style="z-index: 9999"
+></div>
+
+<app-loading-spinner *ngIf="loading"></app-loading-spinner>
+
+<div class="page-bg">
+  <div class="row mx-0 my-2 justify-content-center align-items-center head-card">
+    <h2 style="margin: auto">Failed Business Partner</h2>
+    <a
+      id="reloadAnchor"
+      class="mx-1"
+      (mouseover)="reloadHoverClass = 'fa-spin'"
+      (mouseout)="reloadHoverClass = ''"
+      (click)="getAllWithoutSAPPartner()"
+      [title]="'Reload Table'"
+    >
+      <i [ngClass]="reloadHoverClass" class="fa fa-refresh px-1" style="font-size: x-large"></i>
+    </a>
+  </div>
+  <div style="width: 100vw; height: 50px; background-color: white">
+    <button class="btn btn-success" (click)="updateClientUserSAP()">Update All</button>
+  </div>
+  <div class="table-wrapper">
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+      <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.lastName }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="mobile">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Mobile</th>
+        <td mat-cell *matCellDef="let element">{{ element.mobile }}</td>
+      </ng-container>
+      <ng-container matColumnDef="update">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+        <td mat-cell *matCellDef="let element">
+          <button class="btn" (click)="createClientUserSAP(element)" style="color: white; background-color: blue">Update Sap</button>
+          <!-- <a (click)="createClientUserSAP(element)" [title]="'Update'">
+            <i class="fa fa-refresh px-1" style="font-size: x-large"></i>
+          </a> -->
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+  <mat-paginator #paginator [pageSizeOptions]="[10, 25, 100]" showFirstLastButtons></mat-paginator>
+</div>

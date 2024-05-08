@@ -1,0 +1,60 @@
+* Think about maybe renaming the "authorization-home" component to just "authorization" and moving it up in the authorizaton tree (Done El7)
+* Adding and adjusting authorization in header, try select like the one in TMG's customer frontend (Done El7)
+* ask abdelrahmana bout salesman fields, 4eel el status wel c4c (Done El7)
+* ask abdelrahman about if salesman has view salesmen, 5alli add salesman button ta7t el list bta3et el users fe el view users (Done El7)
+* create salesman to be moved inside users (Done El7)
+* Role Filtering in AssignUserRolesComponent (Done El7)
+* sort users and roles in users, and roles in roles assignment components (Done El7)
+* roles and users columns scrollable (Done El7)
+* in permission and roles selection, only enable adding of new permissions only (Done El7)
+
+* save all data in roles (Done El7)
+* modifdy users table columns in roles component (Done El7)
+* adjust save all buttons positions (Done El7)
+* add email to users column in users component below the user's name (Done El7)
+* adjust role module (Done El7)
+* adjust create role (Done El7)
+* update successful message on save in user and roles components (Done El7)
+* add company code (Done El7)
+* In Users, Adjust Roles Sorting After Adding new Role
+* In Users, Adjust Roles Sorting After Adding new Role
+* in Users, select row when company code is selected
+* in Roles, select row when company code is selected
+* adjust tables overflowing in users & roles components more efficiently
+
+* ask abdelrahman about password strength, validate length 6
+* after creating salesman, popup indicating wheter to create zoomId or not
+* adjust registration page validation in admin
+* Add Lazy loading to Authorization Module's child components (Has Error, needs to be checked)
+* edit user page, mail not editable
+
+* routes accesss authorization accroding to user roles (Done El7)
+* adjust create user (Done El7)
+* tell Hussien about getUser from backend
+* adjust modules in authorization module correctly (Done El7)
+* adjust loading spinner in all project?
+
+* modify salesman object in authorization-salesman to be a temp copy of salesman model?
+* modify users' roles object in authorization-users to be a temp copy of roles model?
+* maybe adjust flags in users to be like TempRoleModel in assign-user-model?
+
+* permissions adjustion: (Done El7)
+	id			descr			comment					status
+	BANK_TRANSFER_TILE	bank tile							(Done El7)
+	BANK_VIEW		bank view button						(Done El7)
+	BANK_RELEASE		bank release button						(Done El7)
+	BANK_REJECT		bank reject button						(Done El7)
+	bank_preview		bank preview button	hold until confirmation from TMG
+	VISA_TILE		visa tile							(Done El7)
+	VISA_RELEASE		visa release button						(Done El7)
+	visa_preview		visa preview button	hold until confirmation from TMG
+	AUTH_TILE		authorization tile						(Done El7)
+	REPORTS_TILE		reports tile							(Done El7)
+	SH_AL		full authorization						(Done El7)
+
+* Users search auto complete in roles users component (Done El7)
+* Salesmen count in salesmen, also admin users count
+* Salesmen Pagination
+* Edit Admin user page (Done El7)
+* in bank, check if release is always dimmed (Done El7)
+* Remove company codes (Check if hiding them is possible) (Done El7)

@@ -1,0 +1,99 @@
+<div class="container">
+  <!-- Loading Spinner -->
+  <app-loading-spinner *ngIf="isLoading; else dataLoaded"></app-loading-spinner>
+
+  <ng-template #dataLoaded>
+    <!-- Users Section -->
+    <div class="grid-container">
+      <div id="left-grid-item">
+        <p class="h4 mb-3 text-center">Admin Users</p>
+        <ul class="list-group">
+          <li
+            *ngFor="let user of users; let i = index"
+            class="list-group-item d-flex justify-content-between"
+            [ngClass]="{ selected: user === selectedUser }"
+            (click)="onUserClicked(i)"
+          >
+            <div class="row mx-0">
+              <div>
+                <span style="font-weight: 600">
+                  <i class="fa fa-user gold"></i>
+                  &nbsp;
+                  {{ user.firstName }} {{ user.lastName }}
+                </span>
+                <br />
+                <span class="us-mail"> <i class="fa fa-envelope gold"></i>&nbsp; &nbsp;{{ user.email }}</span>
+              </div>
+
+              <div class="col edit-col">
+                <span class="edit-icon" (click)="onEditClicked(i)"><i class="fa fa-edit gold fa-1_25x"></i></span>
+              </div>
+            </div>
+          </li>
+          <h5 *ngIf="!users || users.length === 0" class="mb-0 text-center">No Users Found</h5>
+          <hr />
+          <li class="list-group-item" (click)="onCreateClicked()">
+            <a class="pr-2"><i class="fa fa-plus gold"></i></a>
+            &nbsp;
+            <span>Create New User</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Users Permissions Section -->
+      <div *ngIf="selectedUser" id="right-top-grid-item">
+        <div id="user-roles-section">
+          <p class="h5 mb-3 text-center">
+            <strong class="gold">{{ selectedUser.firstName }} {{ selectedUser.lastName }}</strong
+            >{{ (selectedUser.lastName[selectedUser.lastName.length - 1] === "s" ? "'" : "'s") + " Roles" }}
+          </p>
+
+          <div id="roles-config-bar" class="d-flex bd-highlight mb-3 payhead">
+            <div class="ml-auto bd-highlight">
+              <a class="p-2" (click)="openEditRoles()">
+                <!-- <app-custom-tooltip [position]="'right'">Open "Assign Roles" Popup</app-custom-tooltip> -->
+                <i class="fas fa-edit gold fa-1_15x"></i>
+              </a>
+              <a class="p-2" (click)="deleteRoles()">
+                <!-- <app-custom-tooltip [position]="'right'">Delete Selected Roles</app-custom-tooltip> -->
+                <i class="fa fa-trash gold fa-1_25x"></i>
+              </a>
+            </div>
+          </div>
+
+          <table id="user-roles-table" class="table table-sm table-bordered table-hover text-center mb-0">
+            <thead>
+              <tr>
+                <th>
+                  <input
+                    id="select-all-user-roles-checkbox"
+                    class="cursor-pointer"
+                    type="checkbox"
+                    (click)="onAllRolesCheckClicked($event)"
+                  />
+                </th>
+                <th>ID</th>
+                <th>Description</th>
+                <!-- <th>Company Code</th> -->
+              </tr>
+            </thead>
+
+            <tbody class="table-body">
+              <tr *ngFor="let role of selectedUser.roles; let i = index" class="cursor-pointer" (click)="onRoleClicked(i)">
+                <td><input type="checkbox" class="cursor-pointer" [(ngModel)]="selectedRolesFlags[i]" /></td>
+                <td>{{ role.role._id }}</td>
+                <td>{{ role.role.roleText }}</td>
+                <!-- <td>{{ role.compCode ? role.compCodeText + " (" + role.compCode + ")" : "—" }}</td> -->
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Save All Button -->
+      <div id="right-bottom-grid-item" class="row mx-0 justify-content-end" style="padding: 0 15px">
+        <button class="btn btn-success" type="submit" (click)="saveAll()">Save All</button>
+      </div>
+    </div>
+  </ng-template>
+</div>

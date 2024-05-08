@@ -1,0 +1,9 @@
+<div class="cardwrapper" [ngStyle]="{ direction: lang == 'ar' ? 'rtl' : 'ltr' }">
+  <div class="row mx-0 justify-content-center text-center">
+    <a class="mb-0 cursor-text" style="font-weight: bold">{{ data?.message }}</a>
+  </div>
+</div>
+
+<div *ngIf="data?.showOk" class="modal-footer justify-content-center">
+  <button (click)="close('ok')" class="btn-info btn-sm m-0" style="padding: 0.6rem 1.2rem !important">Okay</button>
+</div>

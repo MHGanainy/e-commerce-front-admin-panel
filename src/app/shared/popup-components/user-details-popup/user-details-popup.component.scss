@@ -1,0 +1,23 @@
+.modal-dialog {
+  min-width: 50vw !important;
+  .data {
+    display: grid;
+    grid-template-rows: repeat(3, auto);
+    grid-template-columns: repeat(2, 1fr);
+    grid-row-gap: 30px;
+
+    div {
+      padding-right: 25px;
+    }
+    // input {
+    //   max-width: 80%;
+    // }
+    // select {
+    //   max-width: 80%;
+    // }
+    .reference {
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+  }
+}

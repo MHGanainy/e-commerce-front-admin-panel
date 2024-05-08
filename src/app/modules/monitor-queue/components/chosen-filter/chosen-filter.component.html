@@ -1,0 +1,8 @@
+<div class="bubble-wrapper">
+  <p *ngIf="clearButton" class="bubble-header clear-button" (click)="clearAllFilters()">{{ title }}</p>
+  <p *ngIf="!clearButton" class="bubble-header">{{ title }}</p>
+  <p *ngIf="!clearButton" class="bubble-content">
+    {{ content }}
+    <i class="fas fa-times" (click)="removeFromSelectionList()"></i>
+  </p>
+</div>

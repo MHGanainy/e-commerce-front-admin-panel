@@ -1,0 +1,139 @@
+<app-access-denied *ngIf="isAccessDenied; else permissionGranted"></app-access-denied>
+
+<ng-template #permissionGranted>
+  <div class="container cards-container">
+    <div class="row justify-content-around">
+      <!-- Bank Transfer -->
+      <div *ngIf="permissionGuard.checkPerms(['BANK_TRANSFER_TILE']) && user?.email != 'esedeek@tmg.com.eg'" class="col-md-3">
+        <div class="card">
+          <div class="card-body" routerLink="/approval">
+            <p class="card-description text-right"></p>
+            <div class="card-body-icon">
+              <i class="fas fa-exchange-alt"></i>
+            </div>
+            <div class="card-body-details">
+              <h6 class="card-title text-left">Bank Transfer</h6>
+              <p class="card-description text-right">
+                <img
+                  *ngIf="bankTransferLengthLoading"
+                  src="/assets/imgs/Spinner-1s-200px.svg"
+                  alt="loading..."
+                  srcset=""
+                  style="width: 50px"
+                />
+                {{ bankTransferLengthLoading ? "" : bankTransferLength }} Created
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visa Transfer -->
+      <div *ngIf="permissionGuard.checkPerms(['VISA_TILE']) && user?.email != 'esedeek@tmg.com.eg'" class="col-md-3">
+        <div class="card">
+          <div class="card-body" routerLink="/visa">
+            <p class="card-description text-right"></p>
+            <div class="card-body-icon">
+              <i class="fas fa-money-check"></i>
+            </div>
+            <div class="card-body-details">
+              <h6 class="card-title text-left">Visa</h6>
+              <p class="card-description text-right">
+                <img *ngIf="visaLengthLoading" src="/assets/imgs/Spinner-1s-200px.svg" alt="loading..." srcset="" style="width: 50px" />
+                {{ visaLengthLoading ? "" : visaTransferLength }} Created
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Authorization -->
+      <div *ngIf="permissionGuard.checkPerms(['AUTH_TILE'])" class="col-md-3">
+        <div class="card">
+          <div class="card-body" routerLink="/authorization">
+            <p class="card-description text-right"></p>
+            <div class="card-body-icon">
+              <i class="fas fa-key"></i>
+            </div>
+            <div class="card-body-details">
+              <h6 class="card-title text-left">Authorization</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--  OPERATIONS  -->
+      <div *ngIf="permissionGuard.checkPerms(['OPERATION']) && user?.email != 'esedeek@tmg.com.eg'" class="col-md-3">
+        <div class="card">
+          <div class="card-body" routerLink="/operations">
+            <p class="card-description text-right"></p>
+            <div class="card-body-icon">
+              <i class="fas fa-id-badge"></i>
+            </div>
+            <div class="card-body-details">
+              <h6 class="card-title text-left">Admin Operations</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--  Reports  -->
+      <div class="col-md-3" *ngIf="user?.email != 'esedeek@tmg.com.eg'">
+        <div class="card">
+          <div class="card-body" routerLink="/reports">
+            <p class="card-description text-right"></p>
+            <div class="card-body-icon">
+              <i class="fas fa-id-badge"></i>
+            </div>
+            <div class="card-body-details">
+              <h6 class="card-title text-left">Reports</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Sales Report -->
+      <!-- <div *ngIf="permissionGuard.checkPerms(['REPORTS_TILE'])" class="col-md-3">
+        <div class="card">
+          <div class="card-body" routerLink="/sales-report">
+            <p class="card-description text-right"></p>
+            <div class="card-body-icon">
+              <i class="fas fa-file"></i>
+            </div>
+            <div class="card-body-details">
+              <h6 class="card-title text-left">Reports</h6>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- Queue Monitor -->
+      <div *ngIf="permissionGuard.checkPerms(['MONITOR_TILE']) && user?.email != 'esedeek@tmg.com.eg'" class="col-md-3">
+        <div class="card">
+          <div class="card-body" routerLink="/monitor">
+            <p class="card-description text-right"></p>
+            <div class="card-body-icon">
+              <i class="fas fa-desktop"></i>
+            </div>
+            <div class="card-body-details">
+              <h6 class="card-title text-left">Queue Monitor</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div *ngIf="permissionGuard.checkPerms(['MONITOR_TILE'])" class="col-md-3">
+        <div class="card">
+          <div class="card-body" routerLink="/otp-finder">
+            <p class="card-description text-right"></p>
+            <div class="card-body-icon">
+              <i class="fas fa-unlock"></i>
+            </div>
+            <div class="card-body-details">
+              <h6 class="card-title text-left">OTP Finder</h6>
+            </div>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</ng-template>

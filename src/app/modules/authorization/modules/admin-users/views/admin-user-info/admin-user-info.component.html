@@ -1,0 +1,87 @@
+<div class="wrapper">
+  <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+
+  <div class="container">
+    <!-- Header -->
+    <p class="h4 mb-4 text-center">{{ type === "new" ? "Add" : "Edit" }} Admin User</p>
+
+    <div class="form-row mb-4">
+      <!-- First name -->
+      <div class="col">
+        <label>First Name:</label>
+        <div class="input-group">
+          <input [(ngModel)]="user.firstName" name="firstName" type="text" id="RGfirstName" class="form-control" />
+          <div class="valid-tooltip invalid-feedback">First Name Field Can't Be Empty</div>
+        </div>
+      </div>
+      <!-- Last name -->
+      <div class="col">
+        <label>Last Name:</label>
+        <div class="input-group">
+          <input [(ngModel)]="user.lastName" name="lastName" type="text" id="RGlastName" class="form-control" />
+          <div class="valid-tooltip invalid-feedback">Last Name Field Can't Be Empty</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row mb-4">
+      <!-- Email -->
+      <div class="col">
+        <label>Email:</label>
+        <div class="input-group">
+          <input
+            #email="ngModel"
+            [(ngModel)]="user.email"
+            name="email"
+            type="email"
+            id="RGemail"
+            class="form-control"
+            email
+            [disabled]="type === 'edit'"
+          />
+          <div class="valid-tooltip invalid-feedback">{{ emailErrorMsg }}</div>
+        </div>
+      </div>
+      <!-- Mobile Number -->
+      <div class="col">
+        <label>Mobile Number:</label>
+        <div class="input-group">
+          <input [(ngModel)]="user.mobile" name="mobile" type="text" id="RGmobile" class="form-control" />
+          <div class="valid-tooltip invalid-feedback">Mobile Number Field Can't Be Empty</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row mb-4">
+      <!-- Password -->
+      <div class="col">
+        <label>Password:</label>
+        <div class="input-group">
+          <input [(ngModel)]="user.password" name="password" type="password" id="RGpassword" class="form-control" />
+          <div *ngIf="type === 'edit'" class="valid-tooltip invalid-feedback d-block text-secondary">
+            Note: Leave password field empty if you do not want to change it
+          </div>
+          <div class="valid-tooltip invalid-feedback">{{ passwordErrorMsg ? passwordErrorMsg : "Password Field Can't Be Empty" }}</div>
+        </div>
+      </div>
+      <!-- Confirm Password -->
+      <div class="col">
+        <label>Confirm Password:</label>
+        <div class="input-group">
+          <input [(ngModel)]="user.confirmPassword" name="confirmPassword" type="password" id="RGconfirmPassword" class="form-control" />
+          <div class="valid-tooltip invalid-feedback">
+            {{ passwordErrorMsg ? passwordErrorMsg : "Confirm Password Field Can't Be Empty" }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="error-message-box">
+      <p>{{ errorMsg }}</p>
+    </div>
+    <!-- Sign up button -->
+    <div class="jus-end">
+      <button class="btn btn-success" type="submit" (click)="onSubmit()">Submit</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,154 @@
+.container {
+  padding: 1rem;
+  border: 1px solid #dee2e6;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  background: #eeeeee;
+  position: relative;
+
+  max-width: 90vw;
+  height: calc(100vh - 8vh - 1.5rem - 1.5rem);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  // .col {
+  //   max-height: 100%;
+  // }
+  .us-mail {
+    font-size: 13px;
+    color: #393838;
+  }
+  .grid-container {
+    display: grid;
+    grid-template-columns: 25%;
+    grid-template-rows: auto 2.5rem;
+    grid-gap: 1rem;
+    min-height: calc(100vh - 8vh - 1.5rem - 1.5rem - 2rem);
+
+    #left-grid-item {
+      grid-column: 1 / span 1;
+      grid-row: 1 / span 2;
+
+      overflow-y: auto;
+    }
+
+    #right-top-grid-item {
+      grid-column: 2 / span 3;
+      grid-row: 1 / span 1;
+      overflow-y: auto;
+
+      #user-roles-section {
+        // height: calc(100% - 2.25rem - 1rem);
+        overflow-y: auto;
+      }
+    }
+
+    #right-bottom-grid-item {
+      grid-column: 2 / span 3;
+      grid-row: 2 / span 1;
+    }
+  }
+}
+
+.jus-end {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.list-group {
+  .list-group-item {
+    margin-bottom: 0;
+    padding: 0.75rem;
+
+    position: relative;
+    display: block !important;
+
+    background-color: #fff;
+
+    border: 1px solid rgba(0, 0, 0, 0.125);
+
+    cursor: pointer;
+    .edit-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+
+      margin-left: 0;
+      padding: 0;
+
+      position: absolute;
+      width: calc(100% - 2 * 0.75rem);
+      height: calc(100% - 0.75rem);
+
+      visibility: hidden;
+
+      pointer-events: none;
+
+      .edit-icon {
+        pointer-events: all;
+
+        i {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .list-group-item:first-child {
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+  }
+
+  .list-group-item:last-child {
+    border-bottom-right-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+  }
+
+  .list-group-item:hover {
+    .edit-col {
+      visibility: visible !important;
+    }
+  }
+
+  .list-group-item:hover,
+  .selected {
+    background: #3c8dbc;
+    color: white;
+
+    i.fa {
+      background: white;
+      background: white;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  hr {
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+    width: 100%;
+    border-top: 2px solid rgb(188, 143, 80);
+  }
+}
+
+table#user-roles-table {
+  thead {
+    background-color: white;
+    th {
+      background: -webkit-gradient(linear, left top, left bottom, from(#e5b66f), to(#936831));
+      background: linear-gradient(#e5b66f, #936831);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+  tbody {
+    background-color: white;
+  }
+}

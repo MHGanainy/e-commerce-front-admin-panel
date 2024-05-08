@@ -1,0 +1,16 @@
+table#role-users-table {
+  thead {
+    background-color: white;
+    th {
+      background: -webkit-gradient(linear, left top, left bottom, from(#e5b66f), to(#936831));
+      background: linear-gradient(#e5b66f, #936831);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+  tbody {
+    background-color: white;
+  }
+}

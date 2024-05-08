@@ -1,0 +1,9 @@
+<div class="today-report-content">
+  <mat-card [ngStyle]="{ 'border-right': item.color }" *ngFor="let item of items; let i = index">
+    <div>
+      <label>{{ item.label }} </label>
+      <h1>{{ count[i] }}</h1>
+      <div></div>
+    </div>
+  </mat-card>
+</div>

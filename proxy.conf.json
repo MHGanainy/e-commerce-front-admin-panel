@@ -1,0 +1,29 @@
+{
+  "/adminserver/*": {
+    "target": "https://admin-dev.tmg-ecommerce-24c93556c7052421b1e777d2c03a04e1-0000.eu-de.containers.appdomain.cloud/",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "info",
+    "pathRewrite": {
+      "^/adminserver": ""
+    }
+  },
+  "/local/*": {
+    "target": "https://customer-dev.tmg-ecommerce-24c93556c7052421b1e777d2c03a04e1-0000.eu-de.containers.appdomain.cloud/",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "info",
+    "pathRewrite": {
+      "^/local": ""
+    }
+  },
+  "/server/*": {
+    "target": "https://sales-dev.tmg-ecommerce-24c93556c7052421b1e777d2c03a04e1-0000.eu-de.containers.appdomain.cloud/",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "info",
+    "pathRewrite": {
+      "^/server": ""
+    }
+  }
+}

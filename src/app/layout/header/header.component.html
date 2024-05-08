@@ -1,0 +1,93 @@
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark fixed-top" [containerInside]="false">
+  <!-- TMG Logo -->
+  <mdb-navbar-brand>
+    <img lazyLoad="/assets/imgs/logo1.png" height="auto" width="180" alt="" />
+  </mdb-navbar-brand>
+
+  <links *ngIf="router.url !== '/login'" class="row">
+    <ul class="navbar-nav d-flex justify-content-center" style="text-align: justify; flex: auto">
+      <li *ngIf="router.url !== '/home'">
+        <a class="nav-link waves-light a" (click)="router.navigateByUrl('home')" mdbWavesEffect>Home</a>
+      </li>
+      <li *ngIf="router.url !== '/approval' && permissionGuard.checkPerms(['BANK_TRANSFER_TILE']) && user?.email != 'esedeek@tmg.com.eg'">
+        <a class="nav-link waves-light a" (click)="router.navigateByUrl('approval')" mdbWavesEffect>Bank Approval</a>
+      </li>
+      <li *ngIf="router.url !== '/visa' && permissionGuard.checkPerms(['VISA_TILE']) && user?.email != 'esedeek@tmg.com.eg'">
+        <a class="nav-link waves-light a" (click)="router.navigateByUrl('visa')" mdbWavesEffect>Visa Approval</a>
+      </li>
+      <li *ngIf="router.url !== '/authorization' && permissionGuard.checkPerms(['AUTH_TILE'])">
+        <div class="btn-group d-block" mdbDropdown>
+          <a class="nav-link waves-light a" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Authorization<i class="fa fa-caret-down"></i>
+          </a>
+          <div
+            class="dropdown-menu dropdown-menu-right dropdown-primary"
+            style="width: 10rem; min-width: 10rem; transform: translate3d(-10px, 5px, 0) !important"
+          >
+            <a
+              *ngIf="router.url !== '/authorization/admin-users' && user?.email != 'esedeek@tmg.com.eg'"
+              class="nav-link waves-light a w-100"
+              mdbWavesEffect
+              routerLink="/authorization/admin-users"
+            >
+              <i class="fas fa-users ml-0 pr-1 pl-0"></i> Admin Users
+            </a>
+            <a
+              *ngIf="router.url !== '/authorization/salesmen'"
+              class="nav-link waves-light a w-100"
+              mdbWavesEffect
+              routerLink="/authorization/salesmen"
+            >
+              <i class="fas fa-user-tie ml-0 pr-1 pl-0"></i> Salesmen
+            </a>
+            <a
+              *ngIf="router.url !== '/authorization/roles' && user?.email != 'esedeek@tmg.com.eg'"
+              class="nav-link waves-light a w-100"
+              mdbWavesEffect
+              routerLink="/authorization/roles"
+            >
+              <i class="fas fa-users-cog ml-0 pr-1 pl-0"></i> Roles
+            </a>
+          </div>
+        </div>
+      </li>
+      <!-- <li *ngIf="router.url !== '/sales-report' && permissionGuard.checkPerms(['REPORTS_TILE'])">
+        <a class="nav-link waves-light a" (click)="router.navigateByUrl('sales-report')" mdbWavesEffect>Reports</a>
+      </li> -->
+    </ul>
+
+    <!-- En / Ar Link -->
+    <ul class="navbar-nav ml-auto">
+      <!-- Login / Logout Link -->
+      <div *ngIf="this.router.url !== '/login'">
+        <li class="nav-item" *ngIf="!name && !loading">
+          <a class="nav-link waves-light a" routerLink="/login" mdbWavesEffect>Login</a>
+        </li>
+        <li *ngIf="name && !loading" class="nav-item text-center">
+          <div>
+            <div class="btn-group" mdbDropdown>
+              <a
+                class="nav-link waves-light a"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                *ngIf="name && !loading"
+              >
+                <i class="fa fa-user"></i>
+                {{ name }}<i class="fa fa-caret-down"></i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right dropdown-primary" style="min-width: 8.375rem">
+                <a class="nav-link waves-light a" *ngIf="name && !loading" mdbWavesEffect routerLink="/login" (click)="logOut()"
+                  ><i class="fas fa-sign-out-alt ml-0 pl-0"></i> Logout</a
+                >
+              </div>
+            </div>
+          </div>
+        </li>
+      </div>
+    </ul>
+  </links>
+</mdb-navbar>
+<!-- End of Navbar -->

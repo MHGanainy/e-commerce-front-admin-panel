@@ -1,0 +1,45 @@
+.wrapper {
+  height: calc(100% - 8vh);
+  display: flex;
+  position: absolute;
+  width: 100%;
+  align-items: center;
+
+  .container {
+    padding: 25px 85px;
+    margin-top: -4vh;
+    border: 1px solid #dee2e6;
+    background: #eeeeee;
+    max-height: 100%;
+    overflow-y: auto;
+
+    @media (max-width: 893px) {
+      padding: 25px 10px;
+    }
+  }
+}
+.btn-activate {
+  background-color: #2c7ffb;
+  color: white;
+}
+.jus-end {
+  display: flex;
+  justify-content: flex-end;
+}
+
+label {
+  background: -webkit-linear-gradient(#e5b66f, #936831);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+  font-size: 16px;
+}
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
+.mat-accent .mat-pseudo-checkbox-checked,
+.mat-accent .mat-pseudo-checkbox-indeterminate,
+.mat-pseudo-checkbox-checked,
+.mat-pseudo-checkbox-indeterminate {
+  background-color: green !important; /* Red background for example */
+}

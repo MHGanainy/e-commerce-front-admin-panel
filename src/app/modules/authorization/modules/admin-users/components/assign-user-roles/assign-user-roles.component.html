@@ -1,0 +1,72 @@
+<!-- Modal -->
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">Select Role(s)</h4>
+      <!-- Roles Search Field -->
+      <div class="input-group">
+        <input class="form-control" type="search" [(ngModel)]="roleSearchValue" placeholder="Search Roles" />
+      </div>
+    </div>
+
+    <div class="modal-body">
+      <!-- Roles -->
+      <div class="container-fluid">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>
+                <input id="assign-all-roles-checkbox" class="cursor-pointer" type="checkbox" (click)="onAllRolesCheckClicked($event)" />
+              </th>
+              <th>ID</th>
+              <th>Description</th>
+              <!-- <th>Company Code</th> -->
+              <!-- <th></th> -->
+            </tr>
+          </thead>
+          <Caption *ngIf="loadingFlags.length">
+            <app-loading-spinner></app-loading-spinner>
+          </Caption>
+          <Caption *ngIf="!loadingFlags.length && (!rolesArr || rolesArr.length === 0)">No Data</Caption>
+          <tbody>
+            <ng-container *ngFor="let role of rolesArr; let i = index">
+              <tr *ngIf="matchRole(role)" [class.selected]="role.isSelected">
+                <td (click)="onRoleClicked(i)"><input class="cursor-pointer" type="checkbox" [(ngModel)]="role.isSelected" /></td>
+                <td (click)="onRoleClicked(i)">{{ role.role._id }}</td>
+                <td (click)="onRoleClicked(i)">{{ role.role.roleText }}</td>
+                <!-- Company Codes Search Field -->
+                <!-- <td>
+                  <input
+                    type="text"
+                    placeholder="Search Company Codes"
+                    aria-label="Company Code"
+                    class="form-control"
+                    matInput
+                    [formControl]="companyCodesControls[i]"
+                    [matAutocomplete]="companyCodesAuto"
+                    (click)="companyCodesControls[i].setValue(companyCodesControls[i].value ? companyCodesControls[i].value : '')"
+                  />
+                  <mat-autocomplete #companyCodesAuto="matAutocomplete" autoActiveFirstOption>
+                    <mat-option *ngFor="let option of filteredCompanyCodes[i] | async" [value]="option">
+                      {{ option.compCodeText }} ({{ option.compCode }})
+                    </mat-option>
+                  </mat-autocomplete>
+                </td> -->
+                <!-- <td (click)="addRole(role, i)">
+                  <a><i class="fa fa-plus gold"></i></a>
+                </td> -->
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+      <!-- end of container-fluid-->
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-sm btn-danger" type="button" (click)="onCancelClicked()">Cancel</button>
+      <button class="btn btn-sm btn-success" type="button" (click)="onSaveClicked()">Save</button>
+    </div>
+  </div>
+  <!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->

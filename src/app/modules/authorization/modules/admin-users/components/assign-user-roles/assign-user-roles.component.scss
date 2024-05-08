@@ -1,0 +1,111 @@
+.modal-dialog {
+  min-width: 75vw !important;
+
+  @media (min-width: 576px) {
+    max-width: 500px;
+    margin: 1.75rem auto;
+  }
+
+  .modal-content {
+    min-height: 90vh;
+    background-color: #f4f4f4 !important;
+
+    .modal-header {
+      display: block !important;
+      text-align: -webkit-center;
+      padding: 15px 3.5rem 15px 40px; // padding: 15px 56px 15px 40px; // will work too
+
+      .modal-title {
+        text-align: center;
+        line-height: 1;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+    }
+
+    .modal-body {
+      overflow-y: auto;
+
+      .container-fluid {
+        background-color: #fff;
+        padding: 15px;
+        text-align: center;
+
+        .table {
+          margin-bottom: 0;
+          text-align: center !important;
+
+          thead {
+            tr > th {
+              border-top: 0;
+            }
+            tr > th:first-child {
+              padding: 0.75rem !important;
+            }
+          }
+
+          tbody {
+            tr {
+              cursor: pointer;
+
+              td {
+                vertical-align: middle;
+              }
+            }
+
+            tr:hover {
+              background: #ecf0f5;
+            }
+          }
+        }
+      }
+    }
+
+    .modal-footer {
+      .btn {
+        min-width: 4.25rem;
+        margin: 0 0.625rem;
+
+        font-size: 1rem;
+      }
+
+      .btn:last-child {
+        margin-right: 1rem;
+      }
+    }
+  }
+}
+
+.input-group .input-group-addon {
+  border-radius: 0 !important;
+  border-color: #d2d6de;
+  background-color: #fff;
+}
+
+.input-group .input-group-addon {
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 400;
+  color: #555;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.input-group .input-group-addon:hover {
+  background-color: #dbdddf !important;
+  cursor: pointer;
+}
+
+.selectedRow {
+  background: #ecf0f5;
+}
+
+.loading {
+  max-width: 50px;
+}
+
+.itemSelected {
+  margin-left: 25px;
+  margin-top: 10px;
+}
