@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: e-admin-frontend-app
+  name: vso-admin-frontend-app
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: e-admin-frontend-app
+      app: vso-admin-frontend-app
   template:
     metadata:
       labels:
-        app: e-admin-frontend-app
+        app: vso-admin-frontend-app
     spec:
       containers:
-      - name: e-admin-frontend-app
+      - name: vso-admin-frontend-app
         image: webapp:1
         ports:
         - containerPort: 4200
@@ -30,9 +30,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: e-admin-frontend-service-cip
+  name: vso-admin-frontend-service-cip
   labels:
-    app: e-admin-frontend-app
+    app: vso-admin-frontend-app
 spec:
   type: ClusterIP
   ports:
@@ -41,7 +41,7 @@ spec:
       targetPort: 4200
   # label keys and values that must match in order to receive traffic for this service
   selector:
-    app: e-admin-frontend-app      
+    app: vso-admin-frontend-app      
 # ---
 # apiVersion: v1
 # kind: Service
@@ -57,20 +57,20 @@ spec:
 #       targetPort: 8025
 #   # label keys and values that must match in order to receive traffic for this service
 #   selector:
-#     app: e-admin-frontend-app
+#     app: vso-admin-frontend-app
 
 # ---
 # apiVersion: networking.k8s.io/v1beta1
 # kind: Ingress
 # metadata:
-#   name: e-admin-frontend-ingress
+#   name: vso-admin-frontend-ingress
 # spec:
 #   rules:
 #   - host: e-admin-frontend-app.cluster-ingress-subdomain
 #     http:
 #       paths:
 #       - backend:
-#           serviceName: e-admin-frontend-service-cip
+#           serviceName: vso-admin-frontend-service-cip
 #           servicePort: 80
 #         path: /
 #   tls:
