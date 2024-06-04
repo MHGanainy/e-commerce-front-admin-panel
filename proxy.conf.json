@@ -1,6 +1,6 @@
 {
   "/adminserver/*": {
-    "target": "https://admin-dev.tmg-ecommerce-24c93556c7052421b1e777d2c03a04e1-0000.eu-de.containers.appdomain.cloud/",
+    "target": "https://vso-dev-admin.nuca-mycluster-eu-de-1-cx-5fc3035946e1f798c7284cb63267e8d1-0000.eu-de.containers.appdomain.cloud/",
     "secure": true,
     "changeOrigin": true,
     "logLevel": "info",
