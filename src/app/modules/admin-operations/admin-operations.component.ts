@@ -18,6 +18,7 @@ export class AdminOperationsComponent implements OnInit {
   reloadHoverClass: string;
   dataSource: MatTableDataSource<any>;
   loading = false;
+  isData:boolean = false
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild("paginator") paginator: MatPaginator;
 
@@ -44,18 +45,23 @@ export class AdminOperationsComponent implements OnInit {
     this.loading = true;
     this.userDAOService.getAllWithoutSAPPartner().subscribe(
       (res: any) => {
+        console.log(res);
+        
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
         this.loading = false;
       },
       (error) => {
+        console.log(error);
+        this.isData = true
+        
         this.loading = false;
-        this.dialog.open(ErrorDialogComponent, {
-          data: {
-            message: "Something went wrong. Please try again later",
-          },
-        });
+        // this.dialog.open(ErrorDialogComponent, {
+        //   data: {
+        //     message: "Something went wrong. Please try again later",
+        //   },
+        // });
       }
     );
   }
@@ -66,6 +72,7 @@ export class AdminOperationsComponent implements OnInit {
         this.loading = false;
       },
       (error) => {
+        
         this.loading = false;
         this.dialog.open(ErrorDialogComponent, {
           data: {
