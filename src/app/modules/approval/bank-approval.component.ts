@@ -112,7 +112,6 @@ export class BankApprovalComponent implements OnInit, OnDestroy {
     this.loading = true;
     return this.paymentDAO.getAllBankTrans().subscribe((res: TransactionModel[]) => {
       this.transactions = res;
-
       // Initial Sorting by Date
       res.sort((a, b) => {
         return this.dateComparator(a.transactionDate, b.transactionDate);
@@ -120,13 +119,14 @@ export class BankApprovalComponent implements OnInit, OnDestroy {
 
       let tempRow = [...this.rows];
       tempRow = res.map((obj: TransactionModel) => {
+        
         if (true) {
           this.users.push(obj.user);
           this.units.push(obj.unit);
 
           // Change to P for pending
           return {
-            bp: obj.user.sapPartnerID ? obj.user.sapPartnerID : " — ",
+            bp: obj.user?.sapPartnerID ? obj.user?.sapPartnerID : " — ",
             project_name: obj.unit.project_name,
             ru_old_no: obj.unit.old_unit_code ? obj.unit.old_unit_code : " — ",
             transfer_id: obj.transactionCode,
@@ -150,7 +150,7 @@ export class BankApprovalComponent implements OnInit, OnDestroy {
           };
         }
       });
-      this.rows = tempRow;
+      this.rows = tempRow;      
       this.dataSource = new MatTableDataSource(this.rows);
       this.dataSource.paginator = this.paginator;
       this.loading = false;
