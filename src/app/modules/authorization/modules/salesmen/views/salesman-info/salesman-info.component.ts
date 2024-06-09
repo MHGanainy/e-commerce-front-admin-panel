@@ -62,6 +62,7 @@ export class SalesmanInfoComponent implements OnInit {
     { id: "madinaty", itemName: "Madinaty" },
     { id: "privado", itemName: "Privado" },
     { id: "noor", itemName: "Noor" },
+    { id: "southmed", itemName: "South Med" },
   ];
   selectedProjects: { id: string; itemName: string }[] = [];
   projectsDropdownSettings;
