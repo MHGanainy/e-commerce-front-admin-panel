@@ -20,7 +20,7 @@ export class UnitModel {
   usage_type: String = null;
   usage_type_text: String = null;
   delivery_date: String = null;
-  garden: Number = null;
+  garden: number = null;
   bathroom: Number = null;
   numberofrooms: Number = null;
   area: Number = null;
