@@ -18,6 +18,8 @@ export class UnitDetailsPopupComponent implements OnInit, OnDestroy {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialogRef: MatDialogRef<UnitDetailsPopupComponent>) {
     this.unitData = data.unitData;
+
+    
   }
 
   ngOnInit() {
@@ -39,17 +41,17 @@ export class UnitDetailsPopupComponent implements OnInit, OnDestroy {
       this.infoProperties.push(["Garden Area", this.unitData.garden + " m²"]);
     }
     this.infoProperties.push(["Group", this.unitData.region]);
-    if (this.unitData.usage_type_text == "Apartment" || this.unitData.old_unit_code.split("/")[2][0] != "0") {
+    
       this.infoProperties.push([
         this.unitData.usage_type_text == "Villa" ? "Villa" : this.unitData.usage_type_text == "Apartment" ? "Building" : "Building/Villa",
         this.removeLeftZeroes(this.unitData.old_unit_code.split("/")[1]),
       ]);
-    }
+    
     this.infoProperties.push(["Unit", String(this.getUnitTitle(this.unitData))]);
     if (this.unitData.floor) {
       this.infoProperties.push(["Floor", this.unitData.floor]);
     }
-    this.infoProperties.push(["Deliver In", this.unitData.delivry_text]);
+    this.infoProperties.push(["Deliver In", this.unitData.delivry_text]);    
   }
 
   initInfoRows() {
