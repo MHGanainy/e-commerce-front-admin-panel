@@ -133,7 +133,7 @@ export class VisaComponent implements OnInit, OnDestroy {
           ru_old_no: obj.unit.old_unit_code ? obj.unit.old_unit_code : " — ",
           amount: this.decimalPipe.transform(obj.amount.toString()) + (obj.currency ? " " + obj.currency : ""),
           offer_id: obj.offerID,
-          offer_status: obj.offerStatus,
+          offer_status: obj.offerStatus?obj.offerStatus:'not completed',
           date: obj.transactionDate
             ? format(utcToZonedTime(parseJSON(obj.transactionDateTime), this.currentTimeZone), "dd/MM/yyyy")
             : obj.transactionDate,
