@@ -161,13 +161,13 @@
               class="btn btn-success mr-4"
               [ngClass]="{
                 dimmed:
-                  !row.offer_id || row.bank_status?.toLocaleLowerCase() != 'approved' || row.offer_status?.toLocaleLowerCase() != 'sold'
+                  !row.offer_id || row.bank_status?.toLocaleLowerCase() != 'approved' 
               }"
               [disabled]="
-                !row.offer_id || row.bank_status?.toLocaleLowerCase() != 'approved' || row.offer_status?.toLocaleLowerCase() != 'sold'
+                !row.offer_id || row.bank_status?.toLocaleLowerCase() != 'approved' 
               "
               (click)="
-                !row.offer_id || row.bank_status?.toLocaleLowerCase() != 'approved' || row.offer_status?.toLocaleLowerCase() != 'sold'
+                !row.offer_id || row.bank_status?.toLocaleLowerCase() != 'approved'
                   ? null
                   : acceptTransaction($event, row)
               "
